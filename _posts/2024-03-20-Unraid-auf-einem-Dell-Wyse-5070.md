@@ -40,47 +40,47 @@ Es hat folgende Ausstattung:
 
 Das Gerät ist super kompakt und hat in etwa die Größe einer großen Fritzbox (184 mm x 35,6 mm x 184 mm).
 
-![Rückseite](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/rueckseite.jpg)
+![Rückseite](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/rueckseite.JPG)
 
 ### Auspacken und erster Funktionstest
 Da es sich bei meinem zwar um ein refurbishtes, aber im Endeffekt trotzdem gebrauchtes, Gerät handelt war der erste Schritt ein eigener Funktionstest. Es heißt zwar von den Händlern immer dass die Geräte (zertifiziert) geprüft werden, aber sicher ist sicher. Ich habe es also per DisplayPort über den obersten Ausgang auf der Rückseite an einen meiner externen Monitore angeschlossen. Zusätzlich habe ich eine kabelgebundene USB-Tastatur und -Maus angeschlossen (ehrlicherweise zuerst nur die Tastatur weil ich dachte das reicht, aber im BIOS konnte ich ohne Maus weder die für das BIOS Update benötigten Dateien noch die richtige Reihenfolge der boot Sequenz auswählen).
 
-![Funktionstest](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/funktionstest.jpg)
+![Funktionstest](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/funktionstest.JPG)
 
 Das Gerät startete ohne Probleme, versuchte zu booten aber da wie oben erwähnt kein Betriebssystem installiert war (und es somit nichts zu booten gab) fand ich mich wie erwartet in einem sehr schlichten Menü mit drei Auswahlmöglichkeiten wieder. Nach dem initialen Test habe ich das Gerät neu gestartet um ins BIOS zu gelangen.
 
-![Neustart](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/start.jpg)
+![Neustart](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/start.JPG)
 
 ### BIOS Update
 Beim Neustart kommt man durch drücken von F2 (bei manchen Geräten wohl auch F12) ins BIOS. Ich habe kein Passwort benötigt, solltet ihr gefragt werden lautet es vermutlich "Fireport". Zuallererst habe ich die BIOS Version geprüft und sie war wie erwartet veraltet. Die Support Seite von Dell auf der man sich die aktuellsten BIOS Treiber herunterladen kann habe ich unten bei den Quellen verlinkt. Zum Zeitpunkt der Einrichtung (Dezember 2023) war dies 1.27.0. Durch einen Klick auf "Download" kann man sich die Software herunterladen. Die Datei "Wyse_5070_1.27.0.exe" legt man nun auf einem mit FAT32 formatierten USB-Stick ab (Achtung: beim formatieren werden alle vorhandenen Dateien überschrieben). Nach dem Einstecken des USB-Sticks ins Gerät und einem erneuten Neustart kann das Update durchgeführt werden. Starte das Gerät danach erneut neu, zieh den USB-Stick ab und schaue ob das Update erfolgreich war. Hierbei habe ich direkt auch die Speicherkapazität und den verbauten Arbeitsspeicher geprüft um zu schauen, ob nach meinem anstehenden Umbau auch alles korrekt erkannt wird.
 
-![BIOS](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/bios.jpg)
+![BIOS](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/bios.JPG)
 
 ### Auseinanderbauen des Gehäuses
 Schalte das Gerät nun aus und entferne alle Kabel. Entferne mit Hilfe eines Schraubenziehens die einzelne schwarze Schraube zwischen den vier USB-Ports auf der Rückseite sowie die Kabelhalterung. Ziehe nun das Gehäuse vorsichtig auseinander um ans Innere zu gelangen.
 
-![Auseinanderbau](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/auseinanderbau.JPG.jpg)
+![Auseinanderbau](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/auseinanderbau.JPG)
 
 ### RAM aufrüsten
 Der PC hatte nur magere 4 GB Arbeitsspeicher, daher brauchte ich in jedem Fall ein Update. Obwohl von Dell offiziell nicht freigegeben, funtkioniert das Gerät mit bis zu 32 GB Arbeitspeicher. Ich habe mich daher für eine Aufrüstung von 2x 16 GB RAM entschieden und ein Corsair Vengeance Series 32GB (2 x 16GB) DDR4 SODIMM 2400MHz CL16 Memory Kit verbaut. Dieses Kit hat mich auf Amazon.de etwa 80 Euro inklusive Versand gekostet (Stand Dezember 2023).
 
-![ram](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/ram.jpg)
+![ram](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/ram.JPG)
 
 Raste den aktuell verbauten RAM Riegel durch vorsichtiges Drücken der Haltenasen aus, ziehe ihn nach außen und leg ihn zur Seite. Stecke nun zuerst den unteren Riegel ein und lasse ihn einrasten und wiederhole das ganze dann mit dem oberen Riegel. Stelle hierbei sicher, dass alle Haltenasen wieder korrekt einrasten! Von der nun verbauten Gesamtkapazität von 32 GB kann Unraid etwa 30 GB nutzen.
 
-![Dashboard mit aktueller Auslastung](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/genutzterram.jpg)
+![Dashboard mit aktueller Auslastung](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/genutzterram.JPG)
 
 ### Speicher aufrüsten
 Als ich ihn bekommen hatte, hatte mein Thin Client nur 16 GB internen Speicher. Da einer meiner Beweggründe für die Anschaffung ein selbstgebautes NAS war, wollte ich diesen natürlich erweitern. Hierfür habe ich mich für die Western Digital WD Blue SA510 SATA SSD M.2 2280 internal SSD mit einer Kapazität von 1 TB entschieden, welche mich inklusive Versand etwa 70 Euro gekostet hat (Dezember 2023). Achtung: der Dell Wyse 5070 akzeptiert keine NVME SSD, sondern nur M.2 SATA SSD.
 
-![Speicher](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/speicher.jpg)
+![Speicher](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/speicher.JPG)
 
 Die neue SSD muss vorsichtig **mit der richtigen Ausrichtung** (Einschnitte beachten!) eingesteckt werden. Danach wird sie sanft runter gedrückt und mit einer passenden Schraube fixiert. Da ich keine passende Festplattenschraube zur Hand hatte habe ich eine aus dem Sortiment genommen, das meinem Wowstick beilag. Achtung: diese Schraube darf auf keinen Fall zu fest angezogen werden.
 
 ### Batteriewechsel (optional)
 Da das Gehäuse sowieso offen ist habe ich direkt auch die Knopfzelle gegen eine neue getauscht (CR2032).
 
-![Batterie](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/batterie.jpg)
+![Batterie](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/batterie.JPG)
 
 ### Zusammenbauen des Gehäuses
 Beide Teile des Gehäuses müssen nun wieder vorsichtig zusammen geschoben werden. Danach wird die einzelne schwarze Schraube auf der Rückseite wieder eingeschraubt und die Kabelhalterung wieder fixiert. Nun können alle Kabel wieder eingesteckt und der Thin Client neu gestartet werden.
@@ -91,19 +91,19 @@ Nach dem Start muss wieder F2 (beziehungsweise F12) gedrückt werden um ins BIOS
 ### Vorbereiten des USB-Sticks für Unraid
 Um Unraid nutzen zu können braucht man einen "Marken-"USB-Stick. Der Grund hierfür ist, dass diese (meist) teureren USB-Stick eine individuelle Seriennummer (GUID) haben die von Unraid mit dem eigenen Lizenzschlüssel verknüpft wird. Die Empfehlung ist ein Gerät zu nehmen dass mindestens 2 GB groß ist (was kein Problem darstellen sollte). Früher gab es auch ein oberes Limit von 32 GB, welches aber nicht mehr gilt (außer vielleicht für die manuelle Installation, aber in dieser Anleitung werden wir den "USB Flash Creator" nutzen). Es ist wichtig zu wissen, dass der USB-Stick zu einer Art "Dongle" umfunktioniert wird und "für immer" (oder zumindest so lange wie man diese Unraid Lizenz in diesem Gerät nutzen möchte ohne sie umzuziehen) im Gerät verbleibt und auch *nicht* als weiterer Speicherplatz genutzt werden kann. Es lohnt sich also nicht, hier einen möglichst großen USB-stick zu verwenden. Ich habe einen alten SanDisk Ultra Dual Drive USB Type-C genommen den ich nicht hatte, auch wenn Unraid offiziell aufgrund einiger Probleme mit Produktfälschungen von SanDisk abrät. Bei mir hat es ohne Problem funktioniert. :)
 
-![USB-Stick](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/usb-stick.jpg)
+![USB-Stick](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/usb-stick.JPG)
 
 Nach dem Herunterladen des USB Flash Creator auf den eigenen Computer (MacOS oder Windows, leider kein Linux) von der offiziellen Unraid Webseite muss der USB-Stick eingesteckt werden. Der USB Creator erledigt den Rest, dies kann einige Minuten dauern. Achtung: auch hier werden alle eventuell vorhandenen Daten gelöscht. Der USB-Stick ist danach nicht weiter nutzbar, da er wie bereits beschrieben im Heimserver eingesteckt verbleibt. Nachdem er in den Thin Client eingesteckt wurde kann dieser neu gestartet werden.
 
 ### Boot order Festlegen
 Nach dem Start muss nun zum letzten Mal F2 (beziehungsweise F12) gedrückt werden um ins BIOS zu gelangen. Hier wird unter "general" -> "boot sequence" der neu geflashte USB-Stick mit Hilfe der Pfeiltasten an die oberste Stelle geschoben und das Gerät final neu gestartet.
 
-![Boot order](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/bootorder.jpg)
+![Boot order](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/bootorder.JPG)
 
 ### Unraid starten und einrichten
 Die gesamte Peripherie bis auf den USB-Stick sowie eventuell gewünschte Festplatten können nun entfernt werden. Wenn die boot Reihenfolge korrekt eingestellt wurde startet Unraid nun.
 
-![Finaler Neustart](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/neustart.jpg)
+![Finaler Neustart](/assets/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/neustart.JPG)
 
 Jetzt gibt es zwei Optionen:
 1. Unraid direkt einrichten (in diesem Fall müssen Maus, Tastatur und Monitor natürlich wieder angeschlossen werden)
