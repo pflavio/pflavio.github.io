@@ -1,8 +1,11 @@
 ---
 layout: post
 title:  "Unraid auf einem Dell Wyse 5070"
-categories: [Homelab, Hardware]
+categories: [Homelab]
 tags: [Homelab, Hardware, Unraid, Tech, Server]
+image: 
+  path: /images/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/serverschrank.jpg
+  alt: Der fertige Heimserver an seinem Platz in meinem "Server Schrank"
 ---
 
 # Unraid auf einem Dell Wyse 5070
@@ -21,7 +24,7 @@ Unraid gilt generell als sehr leichter und benutzerfreundlicher Einstieg in die 
 ## Verbaute Hardware und Anleitung zum Aufrüsten
 In diesem Abschnitt geht es um die verwendete Hardware und eine Schritt-für-Schritt-Anleitung zum Einbau. Achtung: dies geschieht selbstverständlich auf eigene Gefahr und Verantwortung. Ich zeige lediglich wie ich das Projekt angegangen bin und hoffe, dass dies anderen bei der Umsetzung ihrer eigenen Homeserver Projekte weiterhilft.
 
-### Sonstige Dinge die für den Umbau und die Ersteinrichtung des Heimservers nützlich sind: 
+### Dinge die für Umbau und Ersteinrichtung des Heimservers nützlich sind: 
 - eine *kabelgebundenes* USB-Tastatur
 - eine *kabelgebundene* USB-Maus
 - ein DisplayPort Kabel
@@ -56,8 +59,6 @@ Das Gerät startete ohne Probleme, versuchte zu booten aber da wie oben erwähnt
 ### BIOS Update
 Beim Neustart kommt man durch drücken von F2 (bei manchen Geräten wohl auch F12) ins BIOS. Ich habe kein Passwort benötigt, solltet ihr gefragt werden lautet es vermutlich "Fireport". Zuallererst habe ich die BIOS Version geprüft und sie war wie erwartet veraltet. Die Support Seite von Dell auf der man sich die aktuellsten BIOS Treiber herunterladen kann habe ich unten bei den Quellen verlinkt. Zum Zeitpunkt der Einrichtung (Dezember 2023) war dies 1.27.0. Durch einen Klick auf "Download" kann man sich die Software herunterladen. Die Datei "Wyse_5070_1.27.0.exe" legt man nun auf einem mit FAT32 formatierten USB-Stick ab (Achtung: beim formatieren werden alle vorhandenen Dateien überschrieben). Nach dem Einstecken des USB-Sticks ins Gerät und einem erneuten Neustart kann das Update durchgeführt werden. Starte das Gerät danach erneut neu, zieh den USB-Stick ab und schaue ob das Update erfolgreich war. Hierbei habe ich direkt auch die Speicherkapazität und den verbauten Arbeitsspeicher geprüft um zu schauen, ob nach meinem anstehenden Umbau auch alles korrekt erkannt wird.
 
-![BIOS](/images/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/bios.JPG)
-
 ### Auseinanderbauen des Gehäuses
 Schalte das Gerät nun aus und entferne alle Kabel. Entferne mit Hilfe eines Schraubenziehens die einzelne schwarze Schraube zwischen den vier USB-Ports auf der Rückseite sowie die Kabelhalterung. Ziehe nun das Gehäuse vorsichtig auseinander um ans Innere zu gelangen.
 
@@ -90,6 +91,8 @@ Beide Teile des Gehäuses müssen nun wieder vorsichtig zusammen geschoben werde
 ### Prüfen ob alles geklappt hat 
 Nach dem Start muss wieder F2 (beziehungsweise F12) gedrückt werden um ins BIOS zu gelangen. Unter "system information" können wir nun überprüfen ob die neuen Komponenten korrekt erkannt werden. Ist dies der Fall, ist die Aufrüstung abgeschlossen und es geht mit der Installation von Unraid OS weiter.
 
+![BIOS](/images/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/bios.JPG)
+
 ### Vorbereiten des USB-Sticks für Unraid
 Um Unraid nutzen zu können braucht man einen "Marken-"USB-Stick. Der Grund hierfür ist, dass diese (meist) teureren USB-Stick eine individuelle Seriennummer (GUID) haben die von Unraid mit dem eigenen Lizenzschlüssel verknüpft wird. Die Empfehlung ist ein Gerät zu nehmen dass mindestens 2 GB groß ist (was kein Problem darstellen sollte). Früher gab es auch ein oberes Limit von 32 GB, welches aber nicht mehr gilt (außer vielleicht für die manuelle Installation, aber in dieser Anleitung werden wir den "USB Flash Creator" nutzen). Es ist wichtig zu wissen, dass der USB-Stick zu einer Art "Dongle" umfunktioniert wird und "für immer" (oder zumindest so lange wie man diese Unraid Lizenz in diesem Gerät nutzen möchte ohne sie umzuziehen) im Gerät verbleibt und auch *nicht* als weiterer Speicherplatz genutzt werden kann. Es lohnt sich also nicht, hier einen möglichst großen USB-stick zu verwenden. Ich habe einen alten SanDisk Ultra Dual Drive USB Type-C genommen den ich nicht hatte, auch wenn Unraid offiziell aufgrund einiger Probleme mit Produktfälschungen von SanDisk abrät. Bei mir hat es ohne Problem funktioniert. :)
 
@@ -97,7 +100,7 @@ Um Unraid nutzen zu können braucht man einen "Marken-"USB-Stick. Der Grund hier
 
 Nach dem Herunterladen des USB Flash Creator auf den eigenen Computer (MacOS oder Windows, leider kein Linux) von der offiziellen Unraid Webseite muss der USB-Stick eingesteckt werden. Der USB Creator erledigt den Rest, dies kann einige Minuten dauern. Achtung: auch hier werden alle eventuell vorhandenen Daten gelöscht. Der USB-Stick ist danach nicht weiter nutzbar, da er wie bereits beschrieben im Heimserver eingesteckt verbleibt. Nachdem er in den Thin Client eingesteckt wurde kann dieser neu gestartet werden.
 
-### Boot order Festlegen
+### Boot order festlegen
 Nach dem Start muss nun zum letzten Mal F2 (beziehungsweise F12) gedrückt werden um ins BIOS zu gelangen. Hier wird unter "general" -> "boot sequence" der neu geflashte USB-Stick mit Hilfe der Pfeiltasten an die oberste Stelle geschoben und das Gerät final neu gestartet.
 
 ![Boot order](/images/2024-03-20-Unraid-auf-einem-Dell-Wyse-5070/bootorder.JPG)
