@@ -14,9 +14,9 @@ timezone: Europe/Berlin
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Homelab Info # the main title
+title: Philip Flávio # the main title
 
-tagline: Hoffentlich nutzliche Infos zu meinem Homelab # it will display as the sub-title
+tagline: Maker und IT Kram. # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Alle Infos zu meinen Projekten.
@@ -73,7 +73,7 @@ theme_mode: # [light | dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn:
+img_cdn: "https://pflavio.github.io/assets"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/commons/philip.jpg"
