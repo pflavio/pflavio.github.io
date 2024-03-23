@@ -5,19 +5,19 @@ order: 5
 ---
 
 # Angaben gemäss § 5 TMG
-Philip Flávio
-Auf der Eierwiese 17
-82031 Grünwald
-Deutschland
+Philip Flávio  
+Auf der Eierwiese 17  
+82031 Grünwald  
+Deutschland  
 
 # Kontakt
 E‑Mail: philip.flavio (at) icloud.com
 
 # Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:
-Philip Flávio
-Auf der Eierwiese 17
-82031 Grünwald
-Deutschland
+Philip Flávio  
+Auf der Eierwiese 17  
+82031 Grünwald  
+Deutschland  
 
 # Haftungsausschluss (Disclaimer)
 
