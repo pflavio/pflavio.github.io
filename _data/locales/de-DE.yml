@@ -15,8 +15,8 @@ tabs:
   tags: Tags
   archives: Archiv
   about: Über mich
-  Impressum: Impressum
-  Datenschutz: Datenschutz
+  impressum: Impressum
+  datenschutz: Datenschutz
 
 # the text displayed in the search bar & search results
 search:
