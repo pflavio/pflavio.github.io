@@ -16,10 +16,10 @@ timezone: Europe/Berlin
 
 title: Philip Flávio # the main title
 
-tagline: Maker und IT Kram. # it will display as the sub-title
+tagline: Passionierter Maker. # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  Alle Infos zu meinen Projekten.
+  Auf dieser Seite teile ich Informationen zu meinen meinen Projekten und sonstigen Themen die mich interessieren.
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -35,7 +35,7 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Philip Flávio
-  email: example@domain.com # change to your email address
+  email: info@pflavio.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
     # - https://twitter.com/username # change to your twitter homepage

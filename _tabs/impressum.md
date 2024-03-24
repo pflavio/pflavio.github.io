@@ -11,7 +11,7 @@ Auf der Eierwiese 17
 Deutschland  
 
 # Kontakt
-E‑Mail: philip.flavio (at) icloud.com
+E‑Mail: info (at) pflavio.com
 
 # Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:
 Philip Flávio  

@@ -70,7 +70,7 @@ Auf der Eierwiese 17
 82031 Grünwald  
 Deutschland  
 
-E‑Mail: philip.flavio (at) icloud.com
+E‑Mail: info (at) pflavio.com
 
 Jede betroffene Person kann sich jederzeit bei allen Fragen und Anregungen zum Datenschutz direkt an mich wenden.
 
