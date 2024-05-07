@@ -8,10 +8,10 @@ image:
   alt: Meine private Cloud besteht auf drei Raspberry Pi Servern mit angeschlossenen SSDs an drei verschiedenen Orten
 ---
 
-# Einleitung
+## Einleitung
 Ich habe mir in den letzten Monaten viele Gedanken zum Thema [Datensouveränität, Datenhoheit bzw. Data Sovereignty](https://www.ionos.de/digitalguide/server/sicherheit/datenhoheit/) gemacht. Der Grund hierfür waren einige Veränderungen in meinem privaten Umfeld, woraus sich der Wunsch ergeben hat, in Zukunft (noch) sorgfältiger mit den eigenen Daten umzugehen und besser kontrollieren zu können, wo diese gehostet sind und wer (potentiell) darauf Zugriff hat. Aufgrund dessen bin ich zum Entschluss gekommen, mein über viele Jahre bestehendes iCloud Abo bei Apple (vorher habe ich Google Drive genutzt) zu kündigen und meine Daten (und die meiner Familie) künftig selbst zu hosten.
 
-## Bestandsaufnahme
+### Bestandsaufnahme
 Um zu verstehen was ich alles umsetzen muss, um dem Ideal einer eigenen Cloud am nächsten zu kommen, habe ich mir zunächst iCloud nochmal angeschaut. Ziel war es zu sehen, was es alles bietet (und was davon ich überhaupt nutze). Sozusagen eine erste Bestandsaufnahme.
 
 iCloud beinhaltet folgende Applikationen:
@@ -37,14 +37,14 @@ Die weiteren Dienste die ich noch ersetzen möchte sind Notes (mit einer Kombina
 
 Zu guter Letzt brauche ich im Gegensatz zu einer kommerziellen Cloud bei einem Anbieter noch ein paar Verwaltungs- und Synchronisationsdienste sowie einige Anwendungen zum Aufsetzen des Systems und für eine sichere Verbindung. Diese sollten möglichst leicht zu bedienen und für meine Nutzer unsichtbar sein.
 
-## Der Plan
+### Der Plan
 Ich plane die Umsetzung mithilfe eines Verbundes von drei Raspberry Pi's und externen SSDs anzugehen. Einer der Raspis steht bei mir zuhause, die anderen beiden jeweils an zwei weiteren, sicheren Orten außerhalb meiner Wohnung. Alle drei Geräte sind mittels eines WireGuard VPN verbunden und somit nicht direkt im Internet exposed.  
 
 Vorteil ist, dass ich mir um die Sicherheit meines Netzwerks, meiner Daten und meiner Dienste keine allzu großen Sorgen machen muss. Nachteil ist, dass sowohl ich als auch meine Familie (außerhalb meines privaten Heimnetzes) immer per VPN mit meinem Heimnetz verbunden sein müssen, um Zugriff zu haben. Dies ist grundsätzlich kein Problem und kann auch für technisch weniger versierte Nutzer beispielsweise über Automatismen (iOS) oder "always on" (Android) gelöst werden.  
 
 Alle von mir genutzten Projekte sind FOSS (free and open source software) und bieten sowohl Desktop Clients für Linux, MacOS und Windows (oder Webanwendungen) als auch Apps für iOS und Android an. Teilweise sind kleinere Einstellungen auf den Endgeräten vorzunehmen um die gleiche Nutzererfahrung wie beispielsweise Apple oder Google Photos zu haben (beispielsweise automatische Uploads aller gemachten Fotos in den eigenen immich account in der Cloud), grundsätzlich ist die Einrichtung aber überall sehr simpel.
 
-## Der finanzielle Aspekt
+### Der finanzielle Aspekt
 Auch unter finanziellen Gesichtspunkten kann (!) sich das selber hosten lohnen, allerdings sollte man es eher aus ideellen Gründen in Betracht ziehen.
 
 ![Hardware für einen Cloud Rechner](/images/2024-05-07-Eine-private-Cloud/Hardware-für-einen-Cloud-Rechner.jpg)
@@ -64,15 +64,15 @@ Demgegenüber stehen meine bisherigen Kosten für den 2 TB im Monat Plan von iCl
 
 ![iCloud Preise in Deutschland 05/2024 (Quelle: Apple)](/images/2024-05-07-Eine-private-Cloud/iCloud-Preise-05⁄2024.jpg)
 
-## Mögliche Schwachpunkte und Verbesserungspotential
+### Mögliche Schwachpunkte und Verbesserungspotential
 Wenn man sich meinen Plan so durchliest könnte man argumentieren, dass "das ja gar keine richtige Cloud ist", weil es keine high availability gibt (d.h. wenn der cloud-master ausfällt, übernimmt keiner der cloud-backups automatisch und die services sind nicht mehr erreichbar). Im Grunde handelt es sich nur um ein etwas komplexeres Setup aus einem kleinen homelab und einer externen backup Lösung. Das ist richtig.  
 
 Ich habe bereits weitere Überlegungen angestellt, die in Richtung Proxmox Cluster (ebenfalls aus drei Rechnern) aus thin clients oder anderen Minicomputern bestehen. Diese sollen nicht mehr über ein WireGuard VPN Netzwerk verbunden, sondern regulär exposed werden. Bei diesem high availability cluster wäre es dann tatsächlich so, dass die Dienste zum einen "einfach so" aus dem Internet erreichbar sind und zum anderen redundant ausgeführt, falls einer der drei Rechner ausfällt. Hierzu muss ich mir allerdings vor allem im Bereich (Zugriffs-) Sicherheit noch ein paar Gedanken machen bevor ich den Plan umsetzen kann. Bis dahin ist die aktuelle Cloud "good enough".
 
-# Die Umsetzung der eigenen Cloud
+## Die Umsetzung der eigenen Cloud
 Nachdem ich nun das warum erklärt habe geht es ab sofort um das wie. Ich werde Schritt für Schritt im Detail auflisten wie ich mein Setup aufgesetzt habe. Basis des Ganzen ist Docker. Um zu zeigen wie man Container aufsetzt werde ich verschiedene Wege aufzeigen. Wer bereits weiß wie das geht und seinen präferierten Weg gefunden hat (meiner sind docker compose files) kann diese Abschnitte natürlich überspringen. Ich habe versucht die einzelnen Kommandos so gut wie möglich zu erklären und zu trennen. Einfache oder sich häufig wiederholende Kommandos werde ich versuchen nicht erneut zu erklären.
 
-## Hardware zusammenbauen
+### Hardware zusammenbauen
 Im ersten Schritt wird die Hardware zusammen gebaut. Das ist relativ einfach und selbsterklärend, nur beim Kabel für den beim Raspberry 5 neuen und im offiziellen Gehäuse bereits integrierten Lüfter muss man ein bisschen aufpassen. Die Micro SD Karte wird noch nicht eingesteckt, da wir sie erst beschreiben müssen. Die folgenden Bilder illustrieren den Zusammenbau.
 
 ![Stecker für den Lüfter (ohne Kappe)](/images/2024-05-07-Eine-private-Cloud/Stecker-für-den-Lüfter-(ohne-Kappe).jpg)
@@ -85,7 +85,7 @@ Im ersten Schritt wird die Hardware zusammen gebaut. Das ist relativ einfach und
 
 ![Gehäuse geschlossen](/images/2024-05-07-Eine-private-Cloud/Gehäuse-geschlossen.jpg)
 
-## Micro SD Karte vorbereiten
+### Micro SD Karte vorbereiten
 Um die zukünftigen Cloud Rechner in Betrieb nehmen zu können, brauchen wir zunächst ein funktionierendes Betriebssystem (Operating System /OS). Hier habe ich mich für den vermeintlich leichtesten Weg entschieden und einfach Raspberry Pi OS (vormals Raspbian) entschieden. Andere aus meiner Sicht für das Projekt auch gut geeignete OS wären [Ubuntu Server 24.04 LTS für den Raspberry Pi](https://ubuntu.com/download/raspberry-pi) oder [Debian für Raspberry Pi](https://raspi.debian.net/). Die Kommandos sollten sich übertragen lassen.
 
 Zum flashen von .iso Dateien nehme ich entweder den [Raspberry Pi Imager](https://www.raspberrypi.com/software/) oder [Balena Etcher](https://etcher.balena.io/)(beides gibt es für Linux, MacOS und Windows). Auf Windows gibt es noch das beliebte Rufus, habe ich persönlich aber noch nie verwendet. Jetzt stecken wir die erste der drei Micro SD Karten in unseren Rechner.
@@ -98,7 +98,7 @@ Unter OS customization gehen wir auf "Edit settings" und ändern unter General d
 
 ![Fertige Cloud Einheit](/images/2024-05-07-Eine-private-Cloud/Fertige-Cloud-Einheit.jpg)
 
-## SSD vorbereiten
+### SSD vorbereiten
 Im nächsten Schritt werden die drei SSD vorbereitet, die später im Betrieb alle Inhalte unserer Cloud aufnehmen werden. Ich habe mich aufgrund der Größe, der Geschwindigkeit und der Lautstärke für SSD und gehen HDD entschieden, da ich die beiden backup Server ja "offsite" bei Familienmitgliedern lagern werde und sie dort möglichst wenig Platz wegnehmen und auf keinen Fall "Schreibgeräusche" von sich geben sollen. Das Einzige was man vor Ort (und auch nur selten) hören wird ist der neue Lüfter beim Pi 5. Zur Vorbereitung schließen wir die erste SSD an unseren Rechner an.
 
 Unter Linux gehen wir wie folgt vor (bei anderen OS kann ich hier leider nichts sagen):
@@ -115,7 +115,7 @@ Achtung: es findet keine Verschlüsselung der Festplatten statt, d.h. diese kön
 
 ![Fertige Cloud Einheit mit SSD](/images/2024-05-07-Eine-private-Cloud/Fertige-Cloud-Einheit-mit-SSD.jpg)
 
-## Raspis einrichten
+### Raspis einrichten
 Jetzt richten wir die drei Raspberry Pi Rechner ein und bereiten sie für die Installation von Docker vor. Die Schritte Raspis einrichten, Docker installieren und Portainer installieren müssen auf allen Geräten durchgeführt werden, Portainer Agent installieren nur auf den cloud-backups. Später ist es dann teils, teils. Ich werde es bei allen Schritten aber auch nochmals dazu schreiben.
 
 Hierzu benötigen wir die jeweiligen IP Adressen. Diese kann man einfach aus den DHCP Leases des eigenen Routers auslesen, unter OPNsense etwa bei Services -> ISC DHCPv4 -> Leases. In der Tabelle werden sie als jüngste Geräte meistens ganz unten stehen oder am Beginn des Teils der IP Adressraums, der dynamisch vergeben wird.
@@ -131,7 +131,7 @@ Zur Einrichtung der Raspis gehen wir wie folgt vor:
 6. Den Pfad zur SSD finden wir wieder mit ```df``` und merken ihn uns für später.
 7. Jetzt wechseln wir mit ```cd``` ins eigene home Verzeichnis und legen mit ```mkdir docker``` einen Ordner für Docker und die diversen weiteren Container an.
 
-## Docker installieren (alle Geräte)
+### Docker installieren (alle Geräte)
 Docker ist eine open source Software, die zum deployment und zur Steuerung von containerisierten Applikationen eingesetzt wird. Im Prinzip starten und steuern wir hiermit (über die Kommandozeile) viele kleine mini Linux Einheiten (meist mit Alpine Linux), die jeweils nur eine Applikation bereit stellen.
 
 Wir richten Docker wie folgt ein:
@@ -142,7 +142,7 @@ Wir richten Docker wie folgt ein:
 5. Mit ```newgrp docker``` loggen wir uns in diese docker Gruppe ein
 6. Als letztes deployen wir mit ```docker run hello-world``` unseren ersten Testcontainer um die Docker Installation abzuschließen.
 
-## Portainer installieren (alle Geräte)
+### Portainer installieren (alle Geräte)
 Das von uns soeben installierte Docker läuft rein über die Kommandozeile. Es gibt zwar eine Docker Desktop Applikation, aber wir nutzen zur grafischen Verwaltung unserer Container einen weiteren Container, nämlich die Docker Verwaltungssoftware Portainer. Diese ist nach der Einrichtung bequem über den Browser erreichbar und ermöglicht uns eine einfache und schnelle Übersicht über unsere diversen container. Am Ende dieser Anleitung werden es übrigens mindestens 21 Container sein, verteilt auf drei Server.
 
 Die Schritte im Detail:
@@ -156,7 +156,7 @@ Die Schritte im Detail:
 8. "Containers" auswählen
 9. Den im letzten Abschnitt frisch erstellten "Hallo Welt" Container löschen (es ist der "nicht-Portainer" Container mit dem zufällig vergebenen Namen)
 
-## Portainer Agent installieren (nur auf den cloud-backups)
+### Portainer Agent installieren (nur auf den cloud-backups)
 Um nicht jedes Mal für jeden der drei Server Portainer aufrufen zu müssen um die Container zu überprüfen setzen wir auf den beiden backup Servern noch Portainer Agent auf. Nach dem Installieren erlaubt uns Portainer Agent die beiden backup Server mit dem Hauptserver zu verbinden und deren Container in der Portainer Instanz des Hauptservers zu verwalten.
 
 Zur Einrichtung brauchen wir die folgenden Schritte:
@@ -171,7 +171,7 @@ Zur Einrichtung brauchen wir die folgenden Schritte:
 
 Achtung: sobald WireGuard eingerichtet wurde (s.u.) müssen die IPs von den derzeitigen lokalen Adressen auf die in WireGuard ausgewählten IPs geändert werden (kleines Stiftsymbol rechts), damit auch noch auf die beiden Portainer Instanzen zugegriffen werden kann wenn sich diese an ihren (remote) Bestimmungsorten befinden.
 
-## MariaDB (nur auf cloud-master)
+### MariaDB (nur auf cloud-master)
 Als Nächstes geht es um die Einrichtung einer Datenbank, die die Informationen für unsere Cloud Applikation Nextcloud beinhalten wird. Die Installation erfolgt beispielhaft grafisch über Portainer (einfach aber relativ aufwendig).
 
 Hier die Anleitung:
@@ -191,7 +191,7 @@ Hier die Anleitung:
 ```
 6. Als Restart Policy "unless stopped" auswählen und "Deploy the container" anklicken
 
-## Nextcloud (nur auf cloud-master)
+### Nextcloud (nur auf cloud-master)
 Jetzt setzen wir [Nextcloud](https://nextcloud.com/) auf. Nextcloud ist eine open source cloud sofware die man selber hosten kann. Dadurch dass alle Daten nur auf unserem eigen Server liegen haben wir die Kontrolle darüber, wer wann wie Zugriff erhält.
 
 Wir machen das nochmal über die Portainer Web Oberfläche:
@@ -218,10 +218,10 @@ Als Nächstes wird die Datenbank konfiguriert:
 4. "Weiter" klicken und die "Recommended apps" überspringen (Apps können wenn gewünscht nachträglich noch hinzugefügt werden)
 5. Im letzten Schritt werden alle weiteren, "normalen" (nicht Admin) Nutzer angelegt
 
-### Bestehende Dateien hochladen
+#### Bestehende Dateien hochladen
 Bestehende Dateien werden bei Nextcloud am besten direkt über das Web Interface hochgeladen. Dies geht relativ schnell und problemlos. Den upload über das Terminal würde ich nur fortgeschrittenen Nutzern empfehlen, da danach die Datenbank neu indexiert werden muss.
 
-## immich (nur auf cloud-master)
+### immich (nur auf cloud-master)
 [immich](https://immich.app/) ist eine selbst gehostete Foto- und Videomanagementsoftware, ähnlich Apple Photos. Dieser Container ist einfacher ohne Portainer mit Docker Compose zu erstellen, was auch die vom Projekt (und von mir persönlich) [bevorzugte](https://immich.app/docs/install/docker-compose/) Variante ist.
 
 Wir gehen wie folgt vor:
@@ -235,7 +235,7 @@ Wir gehen wie folgt vor:
 
 immich ist jetzt unter https://192.168.1.41:2283 erreichbar (bzw. unter der eigenen IP Adresse). In der Portainer Web GUI sollten jetzt auch fünf neue Container sichtbar sein. Wir klicken unter der immich IP "Getting started" an und nehmen die Ersteinrichtung vor. Zuerst legen wir wieder einen separaten Admin user an und dann die weiteren Benutzer (analog zur Einrichtung von Nextcloud).
 
-### Bestehende Fotos hochladen
+#### Bestehende Fotos hochladen
 Da der web upload in immich bei großen Mengen an Fotos nicht ganz so gut funktioniert wie Dateien in Nextcloud, würde ich hier zum "kleinen Helfer" [immich-go](https://github.com/simulot/immich-go) greifen.
 
 Die folgenden Schritte werden auf dem eigenen Rechner (mit Zugriff auf die hochzuladenden Fotos) ausgeführt, nicht auf den neuen Cloud Pis.
@@ -244,7 +244,7 @@ Die folgenden Schritte werden auf dem eigenen Rechner (mit Zugriff auf die hochz
 3. immich-go entpacken, ausführbar machen und in den gleichen Ordner kopieren in dem sich die bestehende Foto-Bibliothek befindet.
 4. In diesen Ordner wechseln und folgendes Kommando ausführen: ```./immich-go -server=http://192.168.1.41:2283 -key=eigenerapikey upload /run/media/pflavio/T9/cloud/immich/library/philip```. Der Befehlt sagt immich-go welchen Ordner mit Fotos er wohin kopieren soll und authentifiziert sich dabei mit einem API-key. Im Befehlt angepasst werden müssen die IP des eigenen Server, der eigene API key sowie der gewünschte Zielpfad. Der Vorgang kann für jeden Nutzer erneut durchgeführt werden (mit entsprechenden individuellen Anpassungen) um alle bestehenden Fotos zum Beispiel aus iCloud umzuziehen. Den eigenen API-key findet man übrigens unter dem eigenen Benutzer und dann "API Keys" und ein Klick auf "New API Key".
 
-## Joplin (nur auf cloud-master)
+### Joplin (nur auf cloud-master)
 Joplin ist eine Notizbuchapp ähnlich OneNote oder Evernote. Wir nutzen diesmal ein docker compose file. Joplin bräuchte für die reine Syncronisierung gar keine eigene App, man könnte auch einfach unsere schon bestehende Nextcloud Instanz einbinden. Joplin Server hat allerdings den Vorteil, dass dann auch Inhalte und Notizbücher geteilt werden können.
 
 Die Einrichtung läuft wie folgt ab:
@@ -286,10 +286,10 @@ Alle Werte bei denen ```bitteaendern``` steht bitte anpassen. Achtung: bei ```- 
 
 ![Viel zu sehen gibt es auf der Joplin Server Instanz nicht, die Inhalte kann man nur über die Apps sehen und bearbeiten. Diese sind für alle gängingen Plattformen kostenfrei erhältlich](/images/2024-05-07-Eine-private-Cloud/joplin-server.jpg)
 
-# Zwischenfazit
+## Zwischenfazit
 Die Einrichtung der Apps, die man normalerweise als Nutzer bei Apple oder Google verwendet ist nun abgeschlossen. Da wir uns aber auch um die Verwaltung und die Vernetzung des Servers kümmern müssen, brauchen wir zusätzlich zu Docker und Portainer noch einige weitere Tools. Diese richten wir im Folgenden ein.
 
-## Syncthing
+### Syncthing
 Um Redundanzen zu schaffen und ein ständiges, automatisiertes Backup aller unser Daten zu erhalten verwenden wir Syncthing. In Syncthing wählt man vereinfacht gesagt einen Ordner aus, der auf allen Instanzen vorhanden ist und konstant überall auf dem gleichen Stand gehalten wird. Das machen wir uns zunutze für den Ordner ```/mnt/usb/cloud-master```, also der Ort an dem wir alle unsere Inhalte abgelegt haben.
 
 Zur Einrichtung nutzen wir wieder die Portainer GUI (da wir mittlerweile so ziemlich alle Wege durch haben um Docker Container einzurichten kann natürlich auch ein anderer Weg gewählt werden) und führen folgende Schritte aus:
@@ -329,7 +329,7 @@ Syncthing überwacht nun permanent das Verzeichnis ```/cloud-master``` auf Ände
 
 Das automatisierte backup auf der eigenen Cloud funktioniert jetzt. Durch die Internetmagie von Syncthing (und die IDs) finden sich die drei Rechner jetzt und synchronisieren sich. Hierzu ist nicht mal ein VPN nötig!
 
-## WireGuard (nur auf den cloud-backups)
+### WireGuard (nur auf den cloud-backups)
 Obowhl nur für Syncthing der nächste Schritt nicht notwendig wäre, werden wir im nächsten Schritt trotzem einen privaten VPN über das sehr leichtgewichtige WireGuard Protokoll einrichten. Das VPN dient zum einen der Fernwartung unserer beiden externen Raspis (die wir ja an einem sicheren, externen Ort aufstellen werden), zum anderen erlaubt es uns in Zukunft auf Wunsch etwa weitere tools oder container zu installieren ohne vor Ort sein zu müssen. Ich habe bereits einen WireGuard Server auf meinem OPNsense Router laufen, daher muss ich nur die beiden cloud-backup Geräte als clients einrichten (das Hauptgerät cloud-master bleibt ja bei mir im Heimnetz und benötigt somit keine WireGuard Anwendung). Falls noch kein WireGuard Server besteht und dieser unbedingt auf dem cloud-master Gerät laufen soll, ist die Einrichtung eines Servers zum Beispiel über den [WireGuard Docker Container von linuxserver.io](https://github.com/linuxserver/docker-wireguard) möglich.
 
 Nur für das einrichten der beiden clients gehen wir folgt vor:
@@ -357,7 +357,7 @@ Die IP Adresse muss einmalig sein und aus dem im Server definierten Addressraum 
 
 Jetzt könnten die beiden backup Geräte bereits "ausgewildert" und an ihren späteren Bestimmgsort verbracht werden.
 
-## homepage (nur auf cloud-master)
+### homepage (nur auf cloud-master)
 Nachdem die Pflicht nun erfüllt ist, folgt die Kür. Als kleinen Bonus und um eine ähnliche UI/UX wie etwa iCloud Web zu erhalten richten wir noch ein kleines Dashboard ein, über dessen GUI wir mit einem Klick in die diversen Apps abspringen können.
 
 Die Einrichtung ist simpel:
@@ -384,10 +384,10 @@ Paperless-ngx (eine Anwendung zur Digitalisierung von Dokumenten auf Papier) ist
 
 Um es (aus meiner Sicht) perfekt zu machen fehlt nun noch ein reverse proxy, wie etwa Nginx Proxy Manager. Die Services sind zwar nicht exposed, aber wir können diesen trotzdem verwenden um mit Let's Encrypt SSL Zertifikate zu bekommen und "schöne" domain names. Das ist allerdings außerhalb des Umfangs dieses Artikels.
 
-# Finaler Test
+## Finaler Test
 Jetzt ist die Stunde der Wahrheit gekommen. Um zu testen ob alles funktioniert, verteilen wir zunächst die beiden externen Raspis. Dann checken wir in Syncthing, ob diese verbunden sind. Alternativ können wir auch schauen, ob die Ping Anzeige auf unserem Dashboard grün ist (=Server ist erreichbar). Zum Testen der Synchronisieerung schieben wir einfach ein paar Dateien auf unsere Nextcloud und schauen, ob Syncthing anfängt zu arbeiten.
 
-# Updates
+## Updates
 Man sollte seine Systeme und Applikationen stets aktuell halten, um die Sicherheit und korrekte Funktion zu gewährleisten.
 
 Zum updaten der OS gehen wir wie folgt vor:
@@ -411,7 +411,7 @@ In diesem blog post habe ich aufgezeigt, warum ich mir Gedanken um eine eigene C
 
 Falls Fragen bestehen schreibt mir gerne eine Email oder schreibt mich bei Mastodon an. Vielen Dank fürs Lesen!
 
-# Quellen
+## Quellen
 - [IONOS Digital Guide Datenhoheit](https://www.ionos.de/digitalguide/server/sicherheit/datenhoheit/)
 - [Apple iCloud+ Deutschland](https://www.apple.com/de/icloud/#compare-plans)
 - [debian.org](https://www.debian.org/)
