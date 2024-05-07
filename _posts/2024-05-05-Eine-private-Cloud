@@ -4,7 +4,7 @@ title:  "Eine private Cloud"
 categories: [Homelab]
 tags: [Homelab, Cloud, Server, Docker, Raspberry Pi]
 image: 
-  path: assets/images/2024-05-07-Eine-private-Cloud/Meine-eigene-Cloud.jpg
+  path: /images/2024-05-07-Eine-private-Cloud/Meine-eigene-Cloud.jpg
   alt: Meine private Cloud besteht auf drei Raspberry Pi Servern mit angeschlossenen SSDs an drei verschiedenen Orten
 ---
 
@@ -27,7 +27,7 @@ iCloud beinhaltet folgende Applikationen:
 - Keynote
 - Find my
 
-![iCloud Bestandteile](assets/images/2024-05-07-Eine-private-Cloud/iCloud-Bestandteile.png)
+![iCloud Bestandteile](/images/2024-05-07-Eine-private-Cloud/iCloud-Bestandteile.png)
 
 Einen eigenen Mailserver zu hosten halte ich für unsinnig und nutze stattdessen seit einigen Jahren Proton Mail aus der Schweiz, einen Anbieter mit sehr starkem Fokus auf der Privatsphäre der Nutzer. Der Dienst beinhaltet auch eine Kontaktverwaltung und einen Kalender (im Paket Mail Plus). Es gäbe bei Proton zwar auch das Unlimited Paket welches zusätzlich noch Drive (ein Cloud Speicher), VPN (selbsterklärend) sowie Pass (eine Passwortverwaltung) enthält, aber da ich die Cloud ja selber hosten möchte, beim VPN auf Mullvad vertraue und auch meine Passwortverwaltung selbst hosten möchte benötige ich diese zusätzlichen Dienste nicht. Mail, Contacts und Calendar habe ich somit bereits abgedeckt.
 
@@ -47,7 +47,7 @@ Alle von mir genutzten Projekte sind FOSS (free and open source software) und bi
 ## Der finanzielle Aspekt
 Auch unter finanziellen Gesichtspunkten kann (!) sich das selber hosten lohnen, allerdings sollte man es eher aus ideellen Gründen in Betracht ziehen.
 
-![Hardware für einen Cloud Rechner](assets/images/2024-05-07-Eine-private-Cloud/Hardware-für-einen-Cloud-Rechner.jpg)
+![Hardware für einen Cloud Rechner](/images/2024-05-07-Eine-private-Cloud/Hardware-für-einen-Cloud-Rechner.jpg)
 
 Die benötigte Hardware für mein Projekt ist folgende:
 - 3x Raspberry Pi 5 (4b RAM Version): ca. 70,00 Euro (210,00 Euro für alle drei)
@@ -58,11 +58,11 @@ Die benötigte Hardware für mein Projekt ist folgende:
 
 Insgesamt kostet die Hardware also ca. 1.340,00 Euro. Nicht gerade wenig, aber immerhin ist die komplette Software umsonst (die Ersteller freuen sich aber über Spenden!). Der Aufkleber ist übrigens von der [Free Software Foundation Europe (fsfe)](https://fsfe.org/) und verdeutlicht den Grundgedanken hinter meinem Projekt ganz gut.
 
-![Ein Teil der benötigten Komponenten](assets/images/2024-05-07-Eine-private-Cloud/Ein-Teil-der-benötigten-Komponenten.jpg)
+![Ein Teil der benötigten Komponenten](/images/2024-05-07-Eine-private-Cloud/Ein-Teil-der-benötigten-Komponenten.jpg)
 
 Demgegenüber stehen meine bisherigen Kosten für den 2 TB im Monat Plan von iCloud+ (teilbar mit maximal fünf Personen) in Höhe von 10,00 Euro im Monat, also 120,00 Euro im Jahr. Wenn ich einen (fiktiven) 4 TB für 20,00 Euro im Monat Plan hochrechne müsste ich meine eigene Cloud also über 5 Jahre nutzen, um (ohne Inflation) rein von den Hardwarekosten (ohne Strom) günstiger zu sein. Naja. Das ist wohl der Preis der Datensouveränität.
 
-![iCloud Preise in Deutschland 05/2024 (Quelle: Apple)](assets/images/2024-05-07-Eine-private-Cloud/iCloud-Preise-05⁄2024.jpg)
+![iCloud Preise in Deutschland 05/2024 (Quelle: Apple)](/images/2024-05-07-Eine-private-Cloud/iCloud-Preise-05⁄2024.jpg)
 
 ## Mögliche Schwachpunkte und Verbesserungspotential
 Wenn man sich meinen Plan so durchliest könnte man argumentieren, dass "das ja gar keine richtige Cloud ist", weil es keine high availability gibt (d.h. wenn der cloud-master ausfällt, übernimmt keiner der cloud-backups automatisch und die services sind nicht mehr erreichbar). Im Grunde handelt es sich nur um ein etwas komplexeres Setup aus einem kleinen homelab und einer externen backup Lösung. Das ist richtig.  
@@ -75,15 +75,15 @@ Nachdem ich nun das warum erklärt habe geht es ab sofort um das wie. Ich werde 
 ## Hardware zusammenbauen
 Im ersten Schritt wird die Hardware zusammen gebaut. Das ist relativ einfach und selbsterklärend, nur beim Kabel für den beim Raspberry 5 neuen und im offiziellen Gehäuse bereits integrierten Lüfter muss man ein bisschen aufpassen. Die Micro SD Karte wird noch nicht eingesteckt, da wir sie erst beschreiben müssen. Die folgenden Bilder illustrieren den Zusammenbau.
 
-![Stecker für den Lüfter (ohne Kappe)](assets/images/2024-05-07-Eine-private-Cloud/Stecker-für-den-Lüfter-(ohne-Kappe).jpg)
+![Stecker für den Lüfter (ohne Kappe)](/images/2024-05-07-Eine-private-Cloud/Stecker-für-den-Lüfter-(ohne-Kappe).jpg)
 
-![Lüfter montiert](assets/images/2024-05-07-Eine-private-Cloud/Lüfter-montiert.jpg)
+![Lüfter montiert](/images/2024-05-07-Eine-private-Cloud/Lüfter-montiert.jpg)
 
-![Einsetzen des Raspis im Gehäuse](assets/images/2024-05-07-Eine-private-Cloud/Einsetzen-des-Raspis-im-Gehäuse.jpg)
+![Einsetzen des Raspis im Gehäuse](/images/2024-05-07-Eine-private-Cloud/Einsetzen-des-Raspis-im-Gehäuse.jpg)
 
-![Gehäuse verbunden](assets/images/2024-05-07-Eine-private-Cloud/Gehäuse-verbunden.jpg)
+![Gehäuse verbunden](/images/2024-05-07-Eine-private-Cloud/Gehäuse-verbunden.jpg)
 
-![Gehäuse geschlossen](assets/images/2024-05-07-Eine-private-Cloud/Gehäuse-geschlossen.jpg)
+![Gehäuse geschlossen](/images/2024-05-07-Eine-private-Cloud/Gehäuse-geschlossen.jpg)
 
 ## Micro SD Karte vorbereiten
 Um die zukünftigen Cloud Rechner in Betrieb nehmen zu können, brauchen wir zunächst ein funktionierendes Betriebssystem (Operating System /OS). Hier habe ich mich für den vermeintlich leichtesten Weg entschieden und einfach Raspberry Pi OS (vormals Raspbian) entschieden. Andere aus meiner Sicht für das Projekt auch gut geeignete OS wären [Ubuntu Server 24.04 LTS für den Raspberry Pi](https://ubuntu.com/download/raspberry-pi) oder [Debian für Raspberry Pi](https://raspi.debian.net/). Die Kommandos sollten sich übertragen lassen.
@@ -92,11 +92,11 @@ Zum flashen von .iso Dateien nehme ich entweder den [Raspberry Pi Imager](https:
 
 Im Raspberry Pi Imager gehen wir auf Raspberry Pi Device und wählen den Raspberry Pi 5 aus. Bei Operating System wählen wir Raspberry Pi OS (other) und dann Raspberry Pi OS Lite (64-bit). Lite habe ich gewählt weil alle drei Rechner sowieso headless (also ohne angeschlossenen Bildschirm und somit auch ohne benötigte Desktop Umgebung laufen werden) laufen werden und der Zugriff rein über SSH (Secure Shell Protocol) laufen wird. Unter Storage wählen wir die Micro SD Karte aus und klicken auf "Next".
 
-![Raspberry Pi Imager](assets/images/2024-05-05-Eine-private-Cloud/Imager.jpg)
+![Raspberry Pi Imager](/images/2024-05-05-Eine-private-Cloud/Imager.jpg)
 
 Unter OS customization gehen wir auf "Edit settings" und ändern unter General den hostname, den username und das password und wählen unter locale etwas passendes aus, in meinem Fall Europe/Berlin. Auch das eigene keyboard sollte man bereits auswählen (vermutlich de, ich selbst nutzte us aufgrund der Lage der Sonderzeichen). Unter Services ist es wichtig den Haken bei "enable SSH" zu setzen und eine Authentifizierungsmethode zu wählen. Für mein Projekt wähle ich "use password", sicherer (vor allem wenn es public exposed wird wäre aber ein key). Unter Options wählen wir eject media when finished, klicken "yes" bei OS customization und bestätigen nochmal mit "yes" das der gesamte Inhalt der ausgewählten Micro SD Karte gelöscht werden wird (sie ist in meinem Fall allerdings sowieso noch leer) und bestätigen den Vorgang mit unserem Passwort. Nach einer kurzen Wartezeit ist die Karte fertig beschrieben und wird automatisch ausgeworfen. Jetzt entfernen wir sie und wiederholen das Ganze noch zwei Mal für die beiden backup Server (wichtig: andere Passwörter wählen!).
 
-![Fertige Cloud Einheit](assets/images/2024-05-07-Eine-private-Cloud/Fertige-Cloud-Einheit.jpg)
+![Fertige Cloud Einheit](/images/2024-05-07-Eine-private-Cloud/Fertige-Cloud-Einheit.jpg)
 
 ## SSD vorbereiten
 Im nächsten Schritt werden die drei SSD vorbereitet, die später im Betrieb alle Inhalte unserer Cloud aufnehmen werden. Ich habe mich aufgrund der Größe, der Geschwindigkeit und der Lautstärke für SSD und gehen HDD entschieden, da ich die beiden backup Server ja "offsite" bei Familienmitgliedern lagern werde und sie dort möglichst wenig Platz wegnehmen und auf keinen Fall "Schreibgeräusche" von sich geben sollen. Das Einzige was man vor Ort (und auch nur selten) hören wird ist der neue Lüfter beim Pi 5. Zur Vorbereitung schließen wir die erste SSD an unseren Rechner an.
@@ -113,7 +113,7 @@ Unter Linux gehen wir wie folgt vor (bei anderen OS kann ich hier leider nichts 
 
 Achtung: es findet keine Verschlüsselung der Festplatten statt, d.h. diese können später einfach abgezogen und ausgelesen werden. Wer möchte kann dies natürlich trotzdem tun, das ist aber außerhalb des Umfangs dieses Artikels.
 
-![Fertige Cloud Einheit mit SSD](assets/images/2024-05-07-Eine-private-Cloud/Fertige-Cloud-Einheit-mit-SSD.jpg)
+![Fertige Cloud Einheit mit SSD](/images/2024-05-07-Eine-private-Cloud/Fertige-Cloud-Einheit-mit-SSD.jpg)
 
 ## Raspis einrichten
 Jetzt richten wir die drei Raspberry Pi Rechner ein und bereiten sie für die Installation von Docker vor. Die Schritte Raspis einrichten, Docker installieren und Portainer installieren müssen auf allen Geräten durchgeführt werden, Portainer Agent installieren nur auf den cloud-backups. Später ist es dann teils, teils. Ich werde es bei allen Schritten aber auch nochmals dazu schreiben.
@@ -167,7 +167,7 @@ Zur Einrichtung brauchen wir die folgenden Schritte:
 5. "Connect" klicken
 6. Zurück auf die Home Seite gehen und die Browsertabs von cloud-backup-1 und cloud-backup-2 schließen, da diese nicht länger benötigt werden. Alle drei Environments sollten nun auf der Weboberfläche von cloud-master zu sehen sein.
 
-![Alle Umgebungen übersichtlich in einem Portainer Fenster angezeigt](assets/images/2024-05-07-Eine-private-Cloud/portainer-environments.png)
+![Alle Umgebungen übersichtlich in einem Portainer Fenster angezeigt](/images/2024-05-07-Eine-private-Cloud/portainer-environments.png)
 
 Achtung: sobald WireGuard eingerichtet wurde (s.u.) müssen die IPs von den derzeitigen lokalen Adressen auf die in WireGuard ausgewählten IPs geändert werden (kleines Stiftsymbol rechts), damit auch noch auf die beiden Portainer Instanzen zugegriffen werden kann wenn sich diese an ihren (remote) Bestimmungsorten befinden.
 
@@ -284,7 +284,7 @@ Alle Werte bei denen ```bitteaendern``` steht bitte anpassen. Achtung: bei ```- 
 4. Das interface ist jetzt unter http://192.168.1.41:22300 erreichbar. Die Standardemail ist  admin@localhost und das Standardpasswort admin. Beides bitte ändern.
 5. Zur Nutzung von Joplin braucht man nun noch einen (oder mehrere, wird ja synchronisiert) Client Apps
 
-![Viel zu sehen gibt es auf der Joplin Server Instanz nicht, die Inhalte kann man nur über die Apps sehen und bearbeiten. Diese sind für alle gängingen Plattformen kostenfrei erhältlich](assets/images/2024-05-07-Eine-private-Cloud/joplin-server.jpg)
+![Viel zu sehen gibt es auf der Joplin Server Instanz nicht, die Inhalte kann man nur über die Apps sehen und bearbeiten. Diese sind für alle gängingen Plattformen kostenfrei erhältlich](/images/2024-05-07-Eine-private-Cloud/joplin-server.jpg)
 
 ## Zwischenfazit
 Die Einrichtung der Apps, die man normalerweise als Nutzer bei Apple oder Google verwendet ist nun abgeschlossen. Da wir uns aber auch um die Verwaltung und die Vernetzung des Servers kümmern müssen, brauchen wir zusätzlich zu Docker und Portainer noch einige weitere Tools. Diese richten wir im Folgenden ein.
@@ -378,7 +378,7 @@ services:
 5. Das interface ist jetzt unter http://192.168.1.41:3000 erreichbar. Noch ist es aber komplett leer.
 6. Zur Nutzung müssen nun die config files von homepage befüllt werden. Als "Starthilfe" habe ich die Datein für das hier gezeigte Dashboard zum Download verlinkt. Sie müssen auf den eigenen Server angepasst (inkl. URL und API keys) in den Ordner ```/home/pflavio/docker/homepage/config``` kopiert werden (die existierenden Dateien werden ersetzt). Die icons müssen unter ```/home/pflavio/docker/homepage/icons``` abgelegt werden. Danach muss der homepage Container neu gestartet werden (zum Beispiel über Portainer). Das Ergebnis wird in etwa so aussehen:
 
-![Unser eigenes Cloud Dashboard (vergleiche das iCloud Web Dashoard in der Einleitung)](assets/images/2024-05-07-Eine-private-Cloud/cloud-Übersicht.png)
+![Unser eigenes Cloud Dashboard (vergleiche das iCloud Web Dashoard in der Einleitung)](/images/2024-05-07-Eine-private-Cloud/cloud-Übersicht.png)
 
 Paperless-ngx (eine Anwendung zur Digitalisierung von Dokumenten auf Papier) ist in diesem Tutorial nicht enthalten. Eventuell schreibe ich dazu einen weiteren Artikel.
 
