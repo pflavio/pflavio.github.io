@@ -250,6 +250,7 @@ Joplin ist eine Notizbuchapp ähnlich OneNote oder Evernote. Wir nutzen diesmal 
 Die Einrichtung läuft wie folgt ab:
 1. Wir wechseln in den Docker Ordner, legen einen neuen Ordner für Joplin an und wechseln in diesen Ordner mit ```cd ~/docker && mkdir joplin && cd joplin```
 2. Wir erstellen eine docker-compose.yml Datei mit ```nano docker-compose.yml``` mit folgendem Inhalt:
+
 ```
   joplin-server:
     image: etechonomy/joplin-server:latest
@@ -279,6 +280,7 @@ Die Einrichtung läuft wie folgt ab:
       - POSTGRES_USER=joplin
       - POSTGRES_DB=joplin
 ```
+
 Alle Werte bei denen ```bitteaendern``` steht bitte anpassen. Achtung: bei ```- APP_BASE_URL``` muss die  IP des Servers inkl. Port 22300 und voranstehendem http:// stehen, sonst ist ein login isn web interface später nicht möglich!
 3. Den Container starten wir mit dem Befehl ```docker compose up -d```
 4. Das interface ist jetzt unter http://192.168.1.41:22300 erreichbar. Die Standardemail ist  admin@localhost und das Standardpasswort admin. Beides bitte ändern.
@@ -286,7 +288,7 @@ Alle Werte bei denen ```bitteaendern``` steht bitte anpassen. Achtung: bei ```- 
 
 ![Viel zu sehen gibt es auf der Joplin Server Instanz nicht, die Inhalte kann man nur über die Apps sehen und bearbeiten. Diese sind für alle gängingen Plattformen kostenfrei erhältlich](/images/2024-05-07-Eine-private-Cloud/joplin-server.jpg)
 
-## Zwischenfazit
+### Zwischenfazit
 Die Einrichtung der Apps, die man normalerweise als Nutzer bei Apple oder Google verwendet ist nun abgeschlossen. Da wir uns aber auch um die Verwaltung und die Vernetzung des Servers kümmern müssen, brauchen wir zusätzlich zu Docker und Portainer noch einige weitere Tools. Diese richten wir im Folgenden ein.
 
 ### Syncthing
@@ -311,7 +313,9 @@ TZ  Europe/Berlin (passende auswählen)
 5. Die Restart Policy ist wie immer "unless stopped" und mit einem Klick auf "Deploy the container" starten wir Syncthing.
 
 Syncthing ist jetzt unter https://192.168.1.41:8384 (bzw. der gewählten IP Adresse) erreichbar. Wichtig ist jetzt, unbedingt einen Nutzernamen und ein Passwort zu vergeben und den Standard Ordner Pfad zu ändern, damit Syncthing für unseren use case in der Einleitung funktioniert.  
-Hiezu entfernen wir zuerst den default folder. Dazu klicken wir auf "Folders", dann "Default Folder", dann "edit" und dann "remove". Wir brauchen ihn nicht, da dieser Ordner auf unseren Raspis jeweils bei den Syncthing config Dateien im Docker Ordner auf dem home Verzeichnis liegt. Synchronisieren wollen wir aber die Daten auf der externen Festplatte, also die in schritt 3. unter dem container volume /data abgelegt sind.  
+
+Hierzu entfernen wir zuerst den default folder. Dazu klicken wir auf "Folders", dann "Default Folder", dann "edit" und dann "remove". Wir brauchen ihn nicht, da dieser Ordner auf unseren Raspis jeweils bei den Syncthing config Dateien im Docker Ordner auf dem home Verzeichnis liegt. Synchronisieren wollen wir aber die Daten auf der externen Festplatte, also die in Schritt 3. unter dem container volume /data abgelegt sind.  
+
 Um diesen Pfad korrekt zu hinterlegen klicken wir oben rechts auf "actions", "settings", "Default Configuration" und dann "Edit Folder Defaults" und geben jetzt als Folder Path ```/data``` an. Dann hinterlegen wir den Ordner durch klicken auf "Folders" und "Add Folder". Die Felder befüllen wir wie folgt:
 ```
 Folder Label cloud-master
@@ -384,7 +388,7 @@ services:
 
 ![Unser eigenes Cloud Dashboard (vergleiche das iCloud Web Dashoard in der Einleitung)](/images/2024-05-07-Eine-private-Cloud/cloud-Übersicht.png)
 
-Paperless-ngx (eine Anwendung zur Digitalisierung von Dokumenten auf Papier) ist in diesem Tutorial nicht enthalten. Eventuell schreibe ich dazu einen weiteren Artikel.
+[Paperless-ngx](https://docs.paperless-ngx.com/) (eine Anwendung zur Digitalisierung von Dokumenten auf Papier) ist in diesem Tutorial nicht enthalten. Eventuell schreibe ich dazu einen weiteren Artikel.
 
 Um es (aus meiner Sicht) perfekt zu machen fehlt nun noch ein reverse proxy, wie etwa Nginx Proxy Manager. Die Services sind zwar nicht exposed, aber wir können diesen trotzdem verwenden um mit Let's Encrypt SSL Zertifikate zu bekommen und "schöne" domain names. Das ist allerdings außerhalb des Umfangs dieses Artikels.
 
@@ -394,10 +398,12 @@ Jetzt ist die Stunde der Wahrheit gekommen. Um zu testen ob alles funktioniert, 
 ## Updates
 Man sollte seine Systeme und Applikationen stets aktuell halten, um die Sicherheit und korrekte Funktion zu gewährleisten.
 
+### Betriebssysteme
 Zum updaten der OS gehen wir wie folgt vor:
 1. Wir verbinden uns mit ```ssh username@192.168.1.41``` und dem Passwort per SSH mit dem jeweiligen Rechner (Achtung: bei den beiden externen Raspis brauchen wir nun die jeweils in WireGuard spezifizierte IP, *nicht* die lokale ).
 2. Wir aktualisieren die Repositories mit ```sudo apt update``` und bringen mit ```sudo apt upgrade``` das komplette System auf den neusten Stand.
 
+### Container
 Zum updaten der container können wir entweder Portainer nutzen oder Docker compose.
 
 Über Portainer:
@@ -413,7 +419,7 @@ Zum updaten der container können wir entweder Portainer nutzen oder Docker comp
 # Fazit
 In diesem blog post habe ich aufgezeigt, warum ich mir Gedanken um eine eigene Cloud gemacht habe und wie diese umgesetzt wurde. Ich habe versucht es möglichst einfach zu halten und im Detail zu erklären. Ich nutze dieses Setup nun seit einigen Wochen und bin bisher sehr zufrieden.
 
-Falls Fragen bestehen schreibt mir gerne eine Email oder schreibt mich bei Mastodon an. Vielen Dank fürs Lesen!
+Falls Fragen bestehen schreibt mir gerne eine Email oder schreibt mich bei [Mastodon](https://mastodon.social/@pflavio) an. Vielen Dank fürs Lesen!
 
 ## Quellen
 - [IONOS Digital Guide Datenhoheit](https://www.ionos.de/digitalguide/server/sicherheit/datenhoheit/)
