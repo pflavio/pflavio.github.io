@@ -9,10 +9,10 @@ image:
 ---
 
 # Einleitung
-Ich habe mir in den letzten Monaten viele Gedanken zum Thema [Datensouveränität, Datenhoheit bzw. Data Sovereignty](https://www.ionos.de/digitalguide/server/sicherheit/datenhoheit/) gemacht. Anstoss hierfür waren einige Veränderungen in meinem privaten Umfeld und hieraus hat sich der Wunsch ergeben, in Zukunft (noch) sorgfältiger mit den eigenen Daten umzugehen und besser kontrollieren zu können, wo diese gehostet sind und wer (potentiell) darauf Zugriff hat. Aufgrund dessen bin ich zum Entschluss gekommen, mein über viele Jahre bestehendes iCloud Abo bei Apple (vorher habe ich Google Drive genutzt) zu kündigen und meine Daten (und die meiner Familie) künftig selbst zu hosten.
+Ich habe mir in den letzten Monaten viele Gedanken zum Thema [Datensouveränität, Datenhoheit bzw. Data Sovereignty](https://www.ionos.de/digitalguide/server/sicherheit/datenhoheit/) gemacht. Der Grund hierfür waren einige Veränderungen in meinem privaten Umfeld, woraus sich der Wunsch ergeben hat, in Zukunft (noch) sorgfältiger mit den eigenen Daten umzugehen und besser kontrollieren zu können, wo diese gehostet sind und wer (potentiell) darauf Zugriff hat. Aufgrund dessen bin ich zum Entschluss gekommen, mein über viele Jahre bestehendes iCloud Abo bei Apple (vorher habe ich Google Drive genutzt) zu kündigen und meine Daten (und die meiner Familie) künftig selbst zu hosten.
 
 ## Bestandsaufnahme
-Um zu verstehen was ich alles umsetzen muss, um dem Ideal einer eigenen Cloud am nächsten zu kommen habe ich mir zunächst iCloud nochmal angeschaut um zu sehen, was es alles bietet (und was davon ich überhaupt nutze). Sozusagen eine erste Bestandsaufnahme.
+Um zu verstehen was ich alles umsetzen muss, um dem Ideal einer eigenen Cloud am nächsten zu kommen, habe ich mir zunächst iCloud nochmal angeschaut. Ziel war es zu sehen, was es alles bietet (und was davon ich überhaupt nutze). Sozusagen eine erste Bestandsaufnahme.
 
 iCloud beinhaltet folgende Applikationen:
 - Mail
@@ -286,7 +286,7 @@ Alle Werte bei denen ```bitteaendern``` steht bitte anpassen. Achtung: bei ```- 
 
 ![Viel zu sehen gibt es auf der Joplin Server Instanz nicht, die Inhalte kann man nur über die Apps sehen und bearbeiten. Diese sind für alle gängingen Plattformen kostenfrei erhältlich](/images/2024-05-07-Eine-private-Cloud/joplin-server.jpg)
 
-## Zwischenfazit
+# Zwischenfazit
 Die Einrichtung der Apps, die man normalerweise als Nutzer bei Apple oder Google verwendet ist nun abgeschlossen. Da wir uns aber auch um die Verwaltung und die Vernetzung des Servers kümmern müssen, brauchen wir zusätzlich zu Docker und Portainer noch einige weitere Tools. Diese richten wir im Folgenden ein.
 
 ## Syncthing
@@ -384,10 +384,10 @@ Paperless-ngx (eine Anwendung zur Digitalisierung von Dokumenten auf Papier) ist
 
 Um es (aus meiner Sicht) perfekt zu machen fehlt nun noch ein reverse proxy, wie etwa Nginx Proxy Manager. Die Services sind zwar nicht exposed, aber wir können diesen trotzdem verwenden um mit Let's Encrypt SSL Zertifikate zu bekommen und "schöne" domain names. Das ist allerdings außerhalb des Umfangs dieses Artikels.
 
-## Finaler Test
+# Finaler Test
 Jetzt ist die Stunde der Wahrheit gekommen. Um zu testen ob alles funktioniert, verteilen wir zunächst die beiden externen Raspis. Dann checken wir in Syncthing, ob diese verbunden sind. Alternativ können wir auch schauen, ob die Ping Anzeige auf unserem Dashboard grün ist (=Server ist erreichbar). Zum Testen der Synchronisieerung schieben wir einfach ein paar Dateien auf unsere Nextcloud und schauen, ob Syncthing anfängt zu arbeiten.
 
-## Updates
+# Updates
 Man sollte seine Systeme und Applikationen stets aktuell halten, um die Sicherheit und korrekte Funktion zu gewährleisten.
 
 Zum updaten der OS gehen wir wie folgt vor:
@@ -407,7 +407,9 @@ Zum updaten der container können wir entweder Portainer nutzen oder Docker comp
 2. Nach dem erfolgreichen download starten wir alle Container auf Basis der neuen Images mit ```docker-compose up -d``` neu und haben so den kompletten Stack auf den neusten Stand gebracht.
 
 # Fazit
-tippi toppi
+In diesem blog post habe ich aufgezeigt, warum ich mir Gedanken um eine eigene Cloud gemacht habe und wie diese umgesetzt wurde. Ich habe versucht es möglichst einfach zu halten und im Detail zu erklären. Ich nutze dieses Setup nun seit einigen Wochen und bin bisher sehr zufrieden.
+
+Falls Fragen bestehen schreibt mir gerne eine Email oder schreibt mich bei Mastodon an. Vielen Dank fürs Lesen!
 
 # Quellen
 - [IONOS Digital Guide Datenhoheit](https://www.ionos.de/digitalguide/server/sicherheit/datenhoheit/)
