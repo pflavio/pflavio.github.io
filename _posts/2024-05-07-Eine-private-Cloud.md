@@ -338,6 +338,7 @@ Nur für das einrichten der beiden clients gehen wir folgt vor:
 3. private key erstellen mit ```wg genkey > cloud-backup-1_private.key``` und notieren
 4. public key erstellen mit ```wg pubkey < cloud-backup-1_private.key > cloud-backup-1_public.key``` und notieren
 5. config file erstellen mit ```sudo nano /etc/wireguard/wg0.conf``` und mit folgendem Inhalt befüllen:
+
 ```
 [Interface]
 PrivateKey = EintragausSchritt3.
@@ -349,6 +350,7 @@ PublicKey = EintragvomServer
 AllowedIPs = 0.0.0.0/0
 Endpoint = öffentlicheIPoderDynDNS:51820
 ```
+
 Die IP Adresse muss einmalig sein und aus dem im Server definierten Addressraum stammen. DNS ist optional, allerdings habe ich mein eigenes Pi-hole und nutze dies dank WireGuard auch für meine diversen externen und mobilen Geräte.
 6. Die beiden public keys der clients müssen jetzt noch im Server als Peers hinterlegt werden (analog zum Server als Peer in Schritt 5.)
 7. WireGuard starten mit ```wg-quick up wg0```
@@ -364,6 +366,7 @@ Die Einrichtung ist simpel:
 1. Wir wechseln wieder per ```cd ~/Docker``` in den Docker Ordner
 2. Im Docker Ordner legen wir mit ```mkdir homepage``` einen Ordner für homepage an
 3. Wir erstellen eine docker-compose.yml Datei mit ```nano docker-compose.yml``` mit folgendem Inhalt:
+
 ```
 services:
   homepage:
@@ -374,6 +377,7 @@ services:
     volumes:
       - /home/pflavio/docker/homepage/config:/app/config
 ```
+
 4. Den Container starten wir mit dem Befehl ```docker compose up -d```
 5. Das interface ist jetzt unter http://192.168.1.41:3000 erreichbar. Noch ist es aber komplett leer.
 6. Zur Nutzung müssen nun die config files von homepage befüllt werden. Als "Starthilfe" habe ich die Datein für das hier gezeigte Dashboard zum Download verlinkt. Sie müssen auf den eigenen Server angepasst (inkl. URL und API keys) in den Ordner ```/home/pflavio/docker/homepage/config``` kopiert werden (die existierenden Dateien werden ersetzt). Die icons müssen unter ```/home/pflavio/docker/homepage/icons``` abgelegt werden. Danach muss der homepage Container neu gestartet werden (zum Beispiel über Portainer). Das Ergebnis wird in etwa so aussehen:
