@@ -221,6 +221,14 @@ Als Nächstes wird die Datenbank konfiguriert:
 #### Bestehende Dateien hochladen
 Bestehende Dateien werden bei Nextcloud am besten direkt über das Web Interface hochgeladen. Dies geht relativ schnell und problemlos. Den upload über das Terminal würde ich nur fortgeschrittenen Nutzern empfehlen, da danach die Datenbank neu indexiert werden muss.
 
+##### Update 22.05.2024
+Wer trotzdem Dateien manuell auf die eigene Nextcloud Instanz schieben möchte geht wie folgt vor:
+1. Verzeichnis auf lokalem Rechner inklusive aller enthaltenen Dateien und Verzeichnisse auf den Cloud Raspi in den Nextcloud Ordner des gewünschten Nutzers auf der externen SSD kopieren```scp -r /Pfad/auf/das/gewünschte/lokale/Verzeichnis nextclouduser@192.168.1.41:/mnt/usb/cloud-master/nextcloud/nextclouduser/files```
+2. Auf dem Cloud Raspi (nicht auf dem lokalen Rechner von dem die Dateien kamen, also vorher per SSH aufschalten) eine Docker shell für den Nextcloud container öffnen ```docker exec -it Nextcloud bash```
+3. Innerhalb der Nextcloud shell zum Zielordner navigieren ```cd /data/nextclouduser/files```
+4. Frisch kopierte Daten neu indexieren ```occ files:scan --path=nextclouduser/files```
+5. Die neu hochgeladenen Dateien sind nun auch im Webinterface von Nextcloud ganz normal verfügbar
+
 ### immich (nur auf cloud-master)
 [immich](https://immich.app/) ist eine selbst gehostete Foto- und Videomanagementsoftware, ähnlich Apple Photos. Dieser Container ist einfacher ohne Portainer mit Docker Compose zu erstellen, was auch die vom Projekt (und von mir persönlich) [bevorzugte](https://immich.app/docs/install/docker-compose/) Variante ist.
 
