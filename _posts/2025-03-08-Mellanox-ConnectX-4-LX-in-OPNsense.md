@@ -155,7 +155,7 @@ sudo reboot
 
 Warum ich das erwähne? Weil ich das DAC Kabel nach dem Einbau in meinem Tiny beim ersten Mal wie gewohnt außen eingesteckt habe und erstmal überlegen musste warum ich keine Verbindung bekomme (bis ich gemerkt habe, dass ich das Interface von 0 auf 1 wechseln muss weil die Interfaces durch den umgedrehten Verbau "vertauscht" sind).
 
-![Die Mellanox ConnectX-4 LX mit montiertem riser für den M720q Tiny. Das bracket muss noch entfernt werden.](/images/2025-03-08-Mellanox-ConnectX-4-LX-in-OPNsense/signal-2025-03-08-221948.jpeg)
+[![Die Mellanox ConnectX-4 LX mit montiertem riser für den M720q Tiny. Das bracket muss noch entfernt werden.](/images/2025-03-08-Mellanox-ConnectX-4-LX-in-OPNsense/signal-2025-03-08-221948.jpeg)
 
 Die Mellanox ConnectX-4 LX mit montiertem riser für den M720q Tiny. Das bracket muss noch entfernt werden.
 
