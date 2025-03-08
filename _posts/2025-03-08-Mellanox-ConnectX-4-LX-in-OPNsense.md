@@ -4,7 +4,7 @@ title:  "Mellanox ConnectX-4 LX in OPNsense"
 categories: [Homelab]
 tags: [Homelab, OPNsense, Networking]
 image: 
-  path: /images/2025-03-08-Mellanox-ConnectX-4-LX-in-OPNsensed/signal-2025-03-08-221948-002.jpeg
+  path: /images/2025-03-08-Mellanox-ConnectX-4-LX-in-OPNsense/signal-2025-03-08-221948-002.jpeg
   alt: Die Mellanox ConnectX-4 LX passt sogar in das beim riser mitgelieferte bracket (eigentlich für quad port gigabit NIC), wenn man die untere Befestigungsschraube nicht montiert. Nicht unbeding schön, aber passt.
 ---
 
@@ -14,7 +14,7 @@ Die Mellanox ConnectX-4 LX ist eine güstige Möglichkeit an eine 10 Gbit NIC (s
 
 Ich habe mir verschiedene NICs gekauft um meine Server im homelab 10 Gbit fähig zu machen. Die Mellanox ConnectX-4 LX ist (aus meiner Sicht) die beste Variante für den Lenovo M720q Tiny. Hier beschreibe ich wie ich die Karte für meinen OPNsense Tiny installiert habe. Zuerst habe ich die Firmware geupdatet (unter Linux, nicht FreeBSD), dann einen neuen boot Paramenter in OPNsense gesetzt, dann die Karte in meinen Tiny eingebaut und zuletzt über die OPNsense direkt die neue Interface Zuordnung erledigt.
 
-![Mellanox ConnectX-4 LX (oben) im Größenvergleich mit einer Intel X710-DA2 (unten). Die Intel NIC passt ohne Modifikationen am Gehäuse nicht in den Lenovo M720q Tiny.](/images/signal-2025-03-08-145352-002.jpeg)
+![Mellanox ConnectX-4 LX (oben) im Größenvergleich mit einer Intel X710-DA2 (unten). Die Intel NIC passt ohne Modifikationen am Gehäuse nicht in den Lenovo M720q Tiny.](/images/2025-03-08-Mellanox-ConnectX-4-LX-in-OPNsense/signal-2025-03-08-145352-002.jpeg)
 
 Mellanox ConnectX-4 LX (oben) im Größenvergleich mit einer Intel X710-DA2 (unten). Die Intel NIC passt ohne Modifikationen am Gehäuse nicht in den Lenovo M720q Tiny.
 
@@ -155,7 +155,7 @@ sudo reboot
 
 Warum ich das erwähne? Weil ich das DAC Kabel nach dem Einbau in meinem Tiny beim ersten Mal wie gewohnt außen eingesteckt habe und erstmal überlegen musste warum ich keine Verbindung bekomme (bis ich gemerkt habe, dass ich das Interface von 0 auf 1 wechseln muss weil die Interfaces durch den umgedrehten Verbau "vertauscht" sind).
 
-![Die Mellanox ConnectX-4 LX mit montiertem riser für den M720q Tiny. Das bracket muss noch entfernt werden.](/images/signal-2025-03-08-145352-002.jpeg)
+![Die Mellanox ConnectX-4 LX mit montiertem riser für den M720q Tiny. Das bracket muss noch entfernt werden.](/images/2025-03-08-Mellanox-ConnectX-4-LX-in-OPNsense/signal-2025-03-08-145352-002.jpeg)
 
 Die Mellanox ConnectX-4 LX mit montiertem riser für den M720q Tiny. Das bracket muss noch entfernt werden.
 
@@ -170,7 +170,7 @@ Unter System -&gt; Settings -&gt; Tunables einen neuen Eintrag erstellen.
 - Value: yes
 - Description: aussagekräftige Beschreibung, um den Eintrag bei Bedarf zuordnen zu können.
 
-[![Der obige screenshot zeigt den fertigen Eintrag](/images/G3Vimage.png)
+[![Der obige screenshot zeigt den fertigen Eintrag](/images/2025-03-08-Mellanox-ConnectX-4-LX-in-OPNsense/G3Vimage.png)
 
 # Wechsel der Interfaces
 
@@ -182,7 +182,7 @@ Nach dem Tausch der NIC musste ich die Interfaces über die OPNsense CLI tausche
 
 das Installationsmenü aufrufen. Hier durch klicken von 1 die Interfaces neu zordnen und im Punkt LAN das neue (drauf achten welches, siehe meine Verwechslung oben) LAN Interface auswählen. Neu starten und fertig!
 
-[![Ansicht auf der OPNsense](/images/signal-2025-03-08-221948-005.jpeg)
+[![Ansicht auf der OPNsense](/images/2025-03-08-Mellanox-ConnectX-4-LX-in-OPNsense/signal-2025-03-08-221948-005.jpeg)
 
 # Quellen
 - [Thomas Krenn Wiki](https://www.thomas-krenn.com/de/wiki/OPNsense\_Chelsio\_Mellanox\_Broadcom\_Netzwerkkarten-Treiber\_aktivieren#Tuneable\_Eintr%C3%A4ge\_f%C3%BCr\_Chelsio\_und\_Mellanox\_Netzwerkkarten)
