@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Philip Flávio: digital products, experimentation, and AI at work; homelab projects, games, gravel cycling, and photography beyond it. German–Brazilian.">
-  <meta name="theme-color" content="#faf9f6">
+  <meta name="theme-color" content="#172d45">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Philip Flávio — Curious by default. Hands-on by choice.">
@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://www.pflavio.com/">
   <link rel="canonical" href="https://www.pflavio.com/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script><link rel="stylesheet" href="style.css">
   <title>Philip Flávio — Curious by default. Hands-on by choice.</title>
 </head>
 <body>
@@ -26,11 +26,10 @@
         <a href="#life">Life</a>
         <a href="#contact">Contact</a>
       </nav>
-    </header>
+    <button class="theme-toggle" type="button" hidden><span class="theme-icon" aria-hidden="true"></span><span class="theme-label">Light mode</span></button></header>
 
     <main id="main" tabindex="-1">
       <section class="hero" aria-labelledby="intro-title">
-        <p class="eyebrow">Philip Flávio</p>
         <h1 id="intro-title"><span class="headline-line">Curious by default.</span> <span class="headline-line serif">Hands-on by choice.</span></h1>
         <div class="hero-details">
           <p class="intro">Hi, I’m Philip. I build digital products, explore new ideas, and enjoy finding out what happens when they meet the real world. Away from work, that same instinct takes me from homelab projects to gravel rides and places I haven’t been before.</p>
@@ -109,7 +108,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>Philip Flávio<span class="brand-dot">.</span></p>
+      
       <nav aria-label="Legal"><a href="impressum/">Impressum</a><a href="datenschutz/">Datenschutz</a></nav>
       <a class="back-top" href="#main">Back to top</a>
     </footer>

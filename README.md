@@ -1,6 +1,6 @@
 # Philip Flávio — personal website
 
-A small, static personal website for [www.pflavio.com](https://www.pflavio.com/). Plain HTML, CSS, and an inline SVG illustration. No Jekyll, Ruby, npm, build step, JavaScript, blog, tracking, externally loaded fonts, or embeds.
+A small, static personal website for [www.pflavio.com](https://www.pflavio.com/). Plain HTML and CSS with a small local JavaScript theme switch. No Jekyll, Ruby, npm, build step, blog, tracking, externally loaded fonts, or embeds.
 
 ## Revision
 
@@ -48,3 +48,7 @@ The old homepage returned literal Jekyll front matter. The old Jekyll workflow f
 - Domain: `CNAME`, canonical/Open Graph URLs in `index.html`, `robots.txt`, and `sitemap.xml`.
 
 The custom `404.html` sends visitors back to the homepage. All visual assets are served locally.
+
+## Color themes
+
+Dark navy is the default. The header button switches between dark and light, remembering the choice in this browser using only the `pflavio-theme` localStorage key. The same choice applies to the legal and error pages. If storage is blocked the switch still works; without JavaScript the site remains readable in dark mode. The script runs before the stylesheet to apply a remembered choice before the page renders.
