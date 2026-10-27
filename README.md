@@ -2,6 +2,12 @@
 
 A small, static personal website for [www.pflavio.com](https://www.pflavio.com/). Plain HTML, CSS, and an inline SVG illustration. No Jekyll, Ruby, npm, build step, JavaScript, blog, tracking, externally loaded fonts, or embeds.
 
+## Revision
+
+This revision builds on commit `a7f4b44a4264e81376aa47d3e30572ebe188de3d` in `pflavio/pflavio.github.io`. The owner approved the design and copy, with the birthplace references removed.
+
+The owner confirmed `hello@pflavio.com` is ready to use. No mailbox or DNS configuration was changed.
+
 ## Hosting
 
 GitHub Pages publishes the root of the `main` branch. The `.nojekyll` file tells GitHub to serve these ready-made files directly. No custom Actions workflow is needed.
@@ -24,8 +30,9 @@ Then open `http://127.0.0.1:8765/`. There is nothing to install or build.
 
 ## Content and privacy
 
-- A casual, evergreen English introduction, based on the public LinkedIn profile and maker interests in the original website.
-- No employer names, detailed career history, location, portrait, or contact address on the homepage. LinkedIn is the contact route.
+- An evergreen English introduction with distinct Work, Play, Life, and Contact sections, based on the owner’s supplied editorial brief.
+- A restrained “Previously at BMW” note, without job titles, dates, achievements, or logos. German–Brazilian background, fluent languages, and interests are included as supplied by the owner. No current location, postal address, family names, or portrait appears on the homepage.
+- Email is the main contact action, with LinkedIn and GitHub also available.
 - Existing German Impressum and Datenschutz content retained on separate pages, including the postal address as requested. These pages carry `noindex,follow`; this is a search-engine hint, not access control. The legal wording was preserved, not legally reviewed or updated.
 - No dates, feeds, posts, availability indicators, or third-party widgets to keep fresh.
 
@@ -35,7 +42,7 @@ The old homepage returned literal Jekyll front matter. The old Jekyll workflow f
 
 ## Small future edits
 
-- Wording and LinkedIn link: `index.html`.
+- Wording and contact links: `index.html`.
 - Colors, spacing, and responsive layout: `style.css`.
 - Legal text: `impressum/index.html` and `datenschutz/index.html`.
 - Domain: `CNAME`, canonical/Open Graph URLs in `index.html`, `robots.txt`, and `sitemap.xml`.
