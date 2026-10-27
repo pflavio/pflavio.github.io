@@ -4,7 +4,7 @@ A small, static personal website for [www.pflavio.com](https://www.pflavio.com/)
 
 ## Revision
 
-This revision builds on commit `a7f4b44a4264e81376aa47d3e30572ebe188de3d` in `pflavio/pflavio.github.io`. The owner approved the design and copy, with the birthplace references removed.
+This revision builds on commit `a7f4b44a4264e81376aa47d3e30572ebe188de3d` in `pflavio/pflavio.github.io`. The owner approved the design and copy, with the birthplace mentioned only in the Life section. The introduction pairs German–Brazilian identity with a travel reference and five languages; Play includes pétanque.
 
 The owner confirmed `hello@pflavio.com` is ready to use. No mailbox or DNS configuration was changed.
 

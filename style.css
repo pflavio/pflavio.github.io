@@ -39,9 +39,11 @@ h1 .serif { letter-spacing: -.057em; }
 .intro { max-width: 660px; font-size: 19px; line-height: 1.7; color: var(--body); }
 .identity { border-left: 1px solid var(--line); padding: 5px 0 5px 30px; }
 .identity-line { font-size: 16px; font-weight: 600; line-height: 1.7; }
-.identity-line > span:last-child { white-space: nowrap; }
-.languages { margin-top: 18px; font-size: 15px; line-height: 1.75; color: var(--muted); }
-.languages > span { display: block; }
+.identity-intro { margin-top: 6px; font-size: 16px; line-height: 1.65; color: var(--body); }
+.languages { display: grid; grid-template-columns: 1fr 1fr; gap: 17px 24px; margin: 22px 0 0; padding-top: 20px; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.65; }
+.fluent-languages { grid-column: 1 / -1; }
+.languages dt { color: var(--ink); }
+.languages dd { margin: 3px 0 0; font-size: 14px; color: var(--muted); }
 
 .section-grid { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 40px; }
 .section-label { font-size: 16px; font-weight: 600; line-height: 1.5; }
@@ -107,8 +109,6 @@ main:focus, section[tabindex="-1"]:focus { outline: none; }
   .hero-details { grid-template-columns: 1.5fr 1fr; gap: 5%; }
   .intro { font-size: 18px; }
   .identity { padding-left: 24px; }
-  .identity-line > span[aria-hidden] { display: none; }
-  .identity-line > span:last-child { display: block; }
   .section-grid { grid-template-columns: 115px minmax(0, 1fr); gap: 27px; }
   .play { padding: 42px 30px 30px; }
   .play-intro { grid-template-columns: 85px minmax(0, 1fr); }
@@ -151,9 +151,7 @@ main:focus, section[tabindex="-1"]:focus { outline: none; }
   .intro { font-size: 18px; line-height: 1.75; }
   .identity { border-left: 0; border-top: 1px solid var(--line); padding: 23px 0 0; }
   .identity-line { font-size: 16px; }
-  .identity-line > span[aria-hidden] { display: inline; }
-  .identity-line > span:last-child { display: inline; }
-  .languages { margin-top: 12px; font-size: 15px; }
+  .languages { margin-top: 20px; font-size: 15px; }
   .section-grid { grid-template-columns: 1fr; gap: 25px; }
   .section-label { font-size: 16px; }
   .section-label > span { font-size: 13px; margin-right: 14px; }
