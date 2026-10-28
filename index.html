@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://www.pflavio.com/">
   <link rel="canonical" href="https://www.pflavio.com/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <script src="theme.js"></script><link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script><link rel="stylesheet" href="style.css?v=photos-20261028">
   <title>Philip Flávio — Curious by default. Hands-on by choice.</title>
 </head>
 <body>
@@ -29,7 +29,8 @@
     <button class="theme-toggle" type="button" hidden><span class="theme-icon" aria-hidden="true"></span><span class="theme-label">Light mode</span></button></header>
 
     <main id="main" tabindex="-1">
-      <section class="hero" aria-labelledby="intro-title">
+      <section class="hero hero-with-photo" aria-labelledby="intro-title">
+        <div class="hero-copy">
         <h1 id="intro-title"><span class="headline-line">Curious by default.</span> <span class="headline-line serif">Hands-on by choice.</span></h1>
         <div class="hero-details">
           <p class="intro">Hi, I’m Philip. I build digital products, explore new ideas, and enjoy finding out what happens when they meet the real world. Away from work, that same instinct takes me from homelab projects to gravel rides and places I haven’t been before.</p>
@@ -43,10 +44,19 @@
             </dl>
           </div>
         </div>
+        </div>
+        <picture class="section-photo hero-photo">
+          <source type="image/webp" srcset="assets/photos/hero-400.webp 400w, assets/photos/hero-800.webp 800w, assets/photos/hero-1200.webp 1200w" sizes="(max-width: 900px) min(560px, calc(100vw - 44px)), (max-width: 1312px) 42vw, 507px">
+          <img src="assets/photos/hero-1200.jpg" srcset="assets/photos/hero-400.jpg 400w, assets/photos/hero-800.jpg 800w, assets/photos/hero-1200.jpg 1200w" sizes="(max-width: 900px) min(560px, calc(100vw - 44px)), (max-width: 1312px) 42vw, 507px" width="1200" height="1801" alt="Philip smiling beside a MINI immersive demo display." fetchpriority="high" decoding="async">
+        </picture>
       </section>
 
-      <section id="work" class="section-grid work" aria-labelledby="work-title" tabindex="-1">
+      <section id="work" class="section-grid work work-with-photo" aria-labelledby="work-title" tabindex="-1">
         <p class="section-label"><span>01</span> Work</p>
+        <picture class="section-photo work-photo">
+          <source type="image/webp" srcset="assets/photos/work-400.webp 400w, assets/photos/work-800.webp 800w, assets/photos/work-1200.webp 1200w" sizes="(max-width: 900px) min(560px, calc(100vw - 44px)), (max-width: 1312px) 42vw, 532px">
+          <img src="assets/photos/work-1200.jpg" srcset="assets/photos/work-400.jpg 400w, assets/photos/work-800.jpg 800w, assets/photos/work-1200.jpg 1200w" sizes="(max-width: 900px) min(560px, calc(100vw - 44px)), (max-width: 1312px) 42vw, 532px" width="1200" height="1799" alt="Philip holding a tablet beside a participant trying an immersive MINI demo with a headset." loading="lazy" decoding="async">
+        </picture>
         <div class="section-content">
           <h2 id="work-title">Building things<br class="wide-break"> people want to use.</h2>
           <p class="body-copy">I like taking an idea, turning it into something tangible, and finding out whether it works for the people it’s meant for. Digital products, experimentation, and AI are all part of that interest. Building is rewarding; seeing what customers actually do with it is where things get interesting.</p>
@@ -69,29 +79,49 @@
           <article>
             <h3>Tinkering &amp; homelab</h3>
             <p>Self-hosted tools, home servers, and projects such as managing my own photo storage. Part practical, part an excuse to learn how something works.</p>
+          <picture class="section-photo play-photo">
+          <source type="image/webp" srcset="assets/photos/homelab-400.webp 400w, assets/photos/homelab-800.webp 800w" sizes="(max-width: 900px) min(440px, calc(100vw - 94px)), (max-width: 1312px) 27vw, 335px">
+          <img src="assets/photos/homelab-800.jpg" srcset="assets/photos/homelab-400.jpg 400w, assets/photos/homelab-800.jpg 800w" sizes="(max-width: 900px) min(440px, calc(100vw - 94px)), (max-width: 1312px) 27vw, 335px" width="800" height="600" alt="Applying thermal paste to a processor during a homelab hardware project." loading="lazy" decoding="async">
+        </picture>
           </article>
           <article>
             <h3>Games &amp; strategy</h3>
             <p>Board games, video games, card games, and pétanque—especially when there’s a strategy to explore, a system to understand, or another approach to try.</p>
+          <picture class="section-photo play-photo">
+              <source type="image/webp" srcset="assets/photos/games-400.webp 400w, assets/photos/games-800.webp 800w" sizes="(max-width: 720px) calc(100vw - 94px), (max-width: 900px) calc(100vw - 132px), (max-width: 1312px) 27vw, 335px">
+              <img src="assets/photos/games-800.jpg" srcset="assets/photos/games-400.jpg 400w, assets/photos/games-800.jpg 800w" sizes="(max-width: 720px) calc(100vw - 94px), (max-width: 900px) calc(100vw - 132px), (max-width: 1312px) 27vw, 335px" width="800" height="600" alt="Pétanque boules scattered across a sunlit gravel court." loading="lazy" decoding="async">
+            </picture>
           </article>
           <article>
             <h3>Gravel, travel<br class="wide-break"> &amp; photography</h3>
             <p>Gravel cycling, new places, and a camera along the way. I enjoy a little adventure and the chance to notice something I would otherwise have missed.</p>
+          <picture class="section-photo play-photo gravel-photo">
+              <source type="image/webp" srcset="assets/photos/gravel-400.webp 400w, assets/photos/gravel-800.webp 800w" sizes="(max-width: 720px) calc(100vw - 94px), (max-width: 900px) calc(100vw - 132px), (max-width: 1312px) 27vw, 335px">
+              <img src="assets/photos/gravel-800.jpg" srcset="assets/photos/gravel-400.jpg 400w, assets/photos/gravel-800.jpg 800w" sizes="(max-width: 720px) calc(100vw - 94px), (max-width: 900px) calc(100vw - 132px), (max-width: 1312px) 27vw, 335px" width="800" height="1067" alt="A gravel bike packed for an adventure, leaning against a wooden wall." loading="lazy" decoding="async">
+            </picture>
           </article>
         </div>
         <p class="personal-note" lang="de">Spielkind aus Leidenschaft.</p>
       </section>
 
-      <section id="life" class="section-grid life" aria-labelledby="life-title" tabindex="-1">
+      <section id="life" class="section-grid life life-with-photo" aria-labelledby="life-title" tabindex="-1">
         <p class="section-label"><span>03</span> Life</p>
         <div class="section-content">
           <h2 id="life-title">German roots.<br>Brazilian ease.</h2>
           <p class="body-copy">I was born in Germany and hold German and Brazilian nationality. Both are part of who I am: I appreciate punctuality and doing things properly, alongside a relaxed outlook and a little Brazilian <i lang="pt-BR">jeitinho</i> when a situation calls for ingenuity.</p>
           <p class="life-aside">Family, my dog, and time away from a screen are part of the picture too.</p>
         </div>
+      <picture class="section-photo life-photo">
+              <source type="image/webp" srcset="assets/photos/life-400.webp 400w, assets/photos/life-800.webp 800w, assets/photos/life-1200.webp 1200w" sizes="(max-width: 720px) calc(100vw - 44px), (max-width: 900px) calc(100vw - 72px), (max-width: 1312px) 42vw, 520px">
+              <img src="assets/photos/life-1200.jpg" srcset="assets/photos/life-400.jpg 400w, assets/photos/life-800.jpg 800w, assets/photos/life-1200.jpg 1200w" sizes="(max-width: 720px) calc(100vw - 44px), (max-width: 900px) calc(100vw - 72px), (max-width: 1312px) 42vw, 520px" width="1200" height="900" alt="A yellow Volkswagen Beetle parked beneath palm trees." loading="lazy" decoding="async">
+            </picture>
       </section>
 
-      <section id="contact" class="contact" aria-labelledby="contact-title" tabindex="-1">
+      <section id="contact" class="contact contact-with-photo" aria-labelledby="contact-title" tabindex="-1">
+        <picture class="contact-portrait">
+              <source type="image/webp" srcset="assets/photos/portrait-160.webp 160w, assets/photos/portrait-320.webp 320w, assets/photos/portrait-480.webp 480w" sizes="(max-width: 900px) 144px, 160px">
+              <img src="assets/photos/portrait-480.jpg" srcset="assets/photos/portrait-160.jpg 160w, assets/photos/portrait-320.jpg 320w, assets/photos/portrait-480.jpg 480w" sizes="(max-width: 900px) 144px, 160px" width="480" height="480" alt="Portrait of Philip Flávio." loading="lazy" decoding="async">
+            </picture>
         <div>
           <p class="section-label">Contact</p>
           <h2 id="contact-title">Say hello.</h2>
