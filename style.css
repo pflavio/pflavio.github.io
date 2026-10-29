@@ -303,3 +303,26 @@ main:focus, section[tabindex="-1"]:focus { outline: none; }
 @media (max-width: 420px) {
   .strengths-list { grid-template-columns: 1fr; gap: 9px; }
 }
+
+/* Compact, accessible language choices; the pages remain fully static. */
+.header-controls { display: flex; align-items: center; gap: 16px; }
+.site-header .language-switcher { display: flex; align-items: center; gap: 3px; margin: 0; width: auto; max-width: none; }
+.site-header .language-switcher a { justify-content: center; width: 44px; padding: 0; border: 1px solid transparent; border-radius: 6px; font-size: 12px; white-space: nowrap; }
+.site-header .language-switcher a[aria-current="page"] { border-color: var(--line); background: var(--panel); font-weight: 700; }
+.language-switcher img { display: block; width: 22px; height: 15px; border-radius: 2px; }
+.site-header .primary-nav { gap: 24px; }
+@media (min-width: 641px) and (max-width: 1100px) {
+  .site-header:has(.header-controls) { display: grid; grid-template-columns: 1fr auto; gap: 0 20px; padding: 20px 0 10px; }
+  .header-controls { grid-column: 2; grid-row: 1; }
+  .site-header .primary-nav { grid-row: 2; grid-column: 1 / -1; margin: 6px 0 0; justify-content: flex-end; max-width: none; width: 100%; }
+  .site-header .language-switcher { grid-row: auto; grid-column: auto; }
+}
+@media (max-width: 640px) {
+  .site-header:has(.header-controls) { display: grid; grid-template-columns: minmax(0,1fr) auto; column-gap: 8px; row-gap: 6px; padding: 22px 0 12px; }
+  .header-controls { display: contents; }
+  .site-header .wordmark { grid-row: 1; grid-column: 1; font-size: 23px; }
+  .site-header .theme-toggle { grid-row: 1; grid-column: 2; padding-inline: 9px; font-size: 12px; gap: 6px; }
+  .site-header .language-switcher { grid-row: 2; grid-column: 1 / -1; justify-content: flex-start; gap: 4px; margin: 6px 0 0; }
+  .site-header .primary-nav { grid-row: 3; grid-column: 1 / -1; margin: 0; width: 100%; max-width: none; justify-content: space-between; gap: 10px; }
+  .site-header .primary-nav a { font-size: 14px; }
+}

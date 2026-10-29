@@ -12,18 +12,20 @@
   document.addEventListener('DOMContentLoaded', () => {
     const button = document.querySelector('.theme-toggle');
     const meta = document.querySelector('meta[name="theme-color"]');
-    const german = root.lang === 'de';
+    const language = root.lang;
+    const labels = {
+      'de': ['Heller Modus', 'Dunkler Modus', 'Zum hellen Modus wechseln', 'Zum dunklen Modus wechseln'],
+      'pt-BR': ['Modo claro', 'Modo escuro', 'Mudar para o modo claro', 'Mudar para o modo escuro'],
+      'en-US': ['Light mode', 'Dark mode', 'Switch to light mode', 'Switch to dark mode']
+    };
+    const words = labels[language] || labels['en-US'];
     const update = () => {
       root.dataset.theme = theme;
       if (meta) meta.content = theme === 'dark' ? '#172d45' : '#faf9f6';
       if (!button) return;
       const nextLight = theme === 'dark';
-      button.querySelector('.theme-label').textContent = german
-        ? (nextLight ? 'Heller Modus' : 'Dunkler Modus')
-        : (nextLight ? 'Light mode' : 'Dark mode');
-      button.setAttribute('aria-label', german
-        ? (nextLight ? 'Zum hellen Modus wechseln' : 'Zum dunklen Modus wechseln')
-        : (nextLight ? 'Switch to light mode' : 'Switch to dark mode'));
+      button.querySelector('.theme-label').textContent = words[nextLight ? 0 : 1];
+      button.setAttribute('aria-label', words[nextLight ? 2 : 3]);
     };
     update();
     if (button) {
