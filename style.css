@@ -290,3 +290,16 @@ main:focus, section[tabindex="-1"]:focus { outline: none; }
   .work-with-photo .section-content { grid-column: 1; grid-row: 2; }
   .work-photo { grid-row: 3; width: min(100%, 560px); }
 }
+
+
+/* Intro strengths and languages, moved into the personal section. */
+.intro-copy .intro + .intro { margin-top: 18px; }
+.intro-strengths { padding-top: 22px; border-top: 1px solid var(--line); }
+.intro-strengths h2 { font-size: 16px; line-height: 1.5; font-weight: 600; letter-spacing: 0; text-wrap: auto; }
+.strengths-list { list-style: none; padding: 0; margin: 13px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 11px 24px; color: var(--body); font-size: 15px; line-height: 1.6; }
+.life-languages { margin-top: 32px; padding-top: 25px; border-top: 1px solid var(--line); }
+.life-languages h3 { font-size: 21px; }
+.life-languages .languages { padding-top: 0; border-top: 0; margin-top: 18px; }
+@media (max-width: 420px) {
+  .strengths-list { grid-template-columns: 1fr; gap: 9px; }
+}
