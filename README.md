@@ -21,3 +21,7 @@ For a local preview, run `python3 -m http.server 8765 --bind 127.0.0.1` in this 
 Update all three HTML pages when changing copy. They share style.css, theme.js and the assets folder. Keep canonical and alternate-language links and sitemap.xml consistent with their routes.
 
 Photos use local responsive JPG/WebP assets. The hero and Work pictures have blurred screens baked into every size. The Life photo includes the supplied privacy edits. Only edited photos belong in the deployed assets. Legal content remains in impressum/index.html and datenschutz/index.html.
+
+## CV downloads
+
+Each Work section links to its matching language PDF in assets/cv/. The supplied documents are served unchanged. Replace the corresponding EN, DE, and PT-BR PDF when updating a CV, and retain the filenames to preserve download links.
