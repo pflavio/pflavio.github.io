@@ -332,8 +332,6 @@ main:focus, section[tabindex="-1"]:focus { outline: none; }
 
 /* Professional positioning and concrete work examples. */
 .professional-focus { margin-bottom: 18px; color: var(--muted); font-size: 15px; line-height: 1.5; font-weight: 600; }
-.intro-links { display: flex; flex-wrap: wrap; column-gap: 24px; row-gap: 0; margin-top: 18px; font-size: 15px; line-height: 1.5; }
-.intro-links a { display: inline-flex; align-items: center; min-height: 44px; }
 .work-example { margin-top: 28px; }
 .work-example h3 { font-size: 22px; line-height: 1.3; letter-spacing: -.02em; }
 .work-example p { margin-top: 10px; color: var(--body); font-size: 18px; line-height: 1.8; }
