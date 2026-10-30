@@ -24,4 +24,5 @@ Photos use local responsive JPG/WebP assets. The hero and Work pictures have blu
 
 ## CV downloads
 
-Each Work section links to its matching language PDF in assets/cv/. The supplied documents are served unchanged. Replace the corresponding EN, DE, and PT-BR PDF when updating a CV, and retain the filenames to preserve download links.
+Each Work section links to its matching language PDF in assets/cv/. Only the public CV editions belong here: no personal phone number or street address, and hello@pflavio.com as the contact email. Private application versions must not be committed. Replace the corresponding EN, DE, and PT-BR PDF when updating a CV, and retain the filenames to preserve download links.
+
